@@ -48,7 +48,8 @@ module Greeve
       def initialize(xml_element)
         @xml_element = xml_element
 
-        # TODO: Force BaseItem to be an abstract class.
+        raise TypeError, "Cannot instantiate an abstract class" \
+          if self.class.superclass != Greeve::API::BaseItem
       end
 
       # :nodoc:
