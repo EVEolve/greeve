@@ -3,17 +3,30 @@ require "typhoeus"
 
 require_relative "greeve/version"
 
-require_relative "greeve/api/base_item"
-require_relative "greeve/api/character_info"
+require_relative "greeve/base_item"
+require_relative "greeve/eve/character_info"
 
 # A Ruby wrapper for the EVE Online XML API.
 module Greeve
+  # Base URL of the EVE XML API.
+  EVE_API_BASE_URL = "https://api.eveonline.com".freeze
+
+  # API resources.
+  module API; end
+  # Character resources.
+  module Character; end
+  # Corporation resources.
+  module Corporation; end
+  # Eve resources.
+  module Eve; end
+  # Map resources.
+  module Map; end
+  # Server resources.
+  module Server; end
 end
 
 # ------------------------------------------------------------------------------
 # TODO: Remove
-
-# BASE_URL = "https://api.eveonline.com/eve"
 
 # response = Typhoeus.get("#{BASE_URL}/CharacterInfo.xml.aspx?characterID=462421468")
 # character_info = Ox.parse(response.body)
@@ -21,3 +34,10 @@ end
 # c = Greeve::API::CharacterInfo.new(result)
 
 # require "pry"; binding.pry
+
+# ------------------------------------------------------------------------------
+
+# Class names should follow the API structure:
+#   Greeve::API::CallList
+#   Greeve::Character::AssetList
+#   Greeve::Eve::CharacterInfo

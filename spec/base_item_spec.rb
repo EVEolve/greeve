@@ -1,16 +1,18 @@
-describe Greeve::API::BaseItem do
+describe Greeve::BaseItem do
   let(:character_xml) {
     load_xml_file("public_character_info", xpath: "result")
   }
 
   it "is an abstract class" do
-    expect { Greeve::API::BaseItem.new(character_xml) }.to raise_error(TypeError)
+    expect { Greeve::BaseItem.new(character_xml) }.to raise_error(TypeError)
   end
 
   context "subclassed" do
     let(:subclass) {
-      Class.new(Greeve::API::BaseItem).tap do |klass|
+      Class.new(Greeve::BaseItem).tap do |klass|
         klass.class_eval do
+          endpoint "eve/CharacterInfo"
+
           attribute :character_id,    xpath: "characterID/?[0]",    type: :integer
           attribute :character_name,  xpath: "characterName/?[0]",  type: :string
           attribute :security_status, xpath: "securityStatus/?[0]", type: :numeric
@@ -23,10 +25,18 @@ describe Greeve::API::BaseItem do
 
     subject { subclass.new(character_xml) }
 
-    describe "class attributes" do
-      let(:subclass) { Class.new(Greeve::API::BaseItem) }
+    describe "DSL" do
+      let(:subclass) { Class.new(Greeve::BaseItem) }
 
-      specify "can be defined" do
+      specify "endpoint" do
+        subclass.class_eval do
+          endpoint "/test/endpoint.xml.aspx"
+        end
+
+        subject.__send__(:endpoint).should eq "test/endpoint"
+      end
+
+      specify "attribute" do
         _character_name_xpath = character_name_xpath
 
         subclass.class_eval do
@@ -34,7 +44,15 @@ describe Greeve::API::BaseItem do
         end
 
         subject.character_name.should eq character_name
-      end
+      end  
+    end
+
+    specify "#refresh is not implemented" do
+      expect { subject.refresh }.to raise_error NotImplementedError
+    end
+
+    specify "#cache_expired? is not implemented" do
+      expect { subject.cache_expired? }.to raise_error NotImplementedError
     end
 
     its(:inspect) do

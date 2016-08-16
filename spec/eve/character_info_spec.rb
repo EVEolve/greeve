@@ -1,9 +1,9 @@
-describe Greeve::API::CharacterInfo do
+describe Greeve::Eve::CharacterInfo do
   let(:character_xml) {
     load_xml_file("public_character_info", xpath: "result")
   }
 
-  subject { Greeve::API::CharacterInfo.new(character_xml) }
+  subject { Greeve::Eve::CharacterInfo.new(character_xml) }
 
   its(:character_id) do
     should eq character_xml.locate("characterID/?[0]").first.to_i

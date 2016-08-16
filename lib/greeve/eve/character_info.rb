@@ -1,12 +1,11 @@
-require_relative "base_item"
+require_relative "../base_item"
 
 module Greeve
-  module API
+  module Eve
     # Public character info.
-    #
-    # Endpoint:
-    # https://api.eveonline.com/eve/CharacterInfo.xml.aspx?characterID={character_id}
-    class CharacterInfo < BaseItem
+    class CharacterInfo < Greeve::BaseItem
+      endpoint "eve/CharacterInfo"
+
       attribute :character_id,     xpath: "characterID/?[0]",     type: :integer
       attribute :character_name,   xpath: "characterName/?[0]",   type: :string
       attribute :race,             xpath: "race/?[0]",            type: :string
@@ -18,6 +17,13 @@ module Greeve
       attribute :corporation,      xpath: "corporation/?[0]",     type: :string
       attribute :corporation_date, xpath: "corporationDate/?[0]", type: :string
       attribute :security_status,  xpath: "securityStatus/?[0]",  type: :numeric
+    end
+
+    # @param character_id [Integer] EVE character ID
+    def initialize(character_id)
+      super(query_params: {
+        "characterID" => character_id,
+      })
     end
   end
 end
