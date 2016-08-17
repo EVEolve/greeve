@@ -1,51 +1,27 @@
 describe Greeve::Eve::CharacterInfo do
-  let(:character_xml) {
-    load_xml_file("public_character_info", xpath: "result")
+  let(:response_file) { "public_character_info" }
+  let(:character_id) { 462421468 }
+
+  before {
+    stub_endpoint(
+      "#{Greeve::EVE_API_BASE_URL}/eve/CharacterInfo.xml.aspx?characterID=#{character_id}",
+      response_file
+    )
+
+    invalidate_remaining_endpoints
   }
 
-  subject { Greeve::Eve::CharacterInfo.new(character_xml) }
+  subject { Greeve::Eve::CharacterInfo.new(character_id) }
 
-  its(:character_id) do
-    should eq character_xml.locate("characterID/?[0]").first.to_i
-  end
-
-  its(:character_name) do
-    should eq character_xml.locate("characterName/?[0]").first
-  end
-
-  its(:race) do
-    should eq character_xml.locate("race/?[0]").first
-  end
-
-  its(:bloodline_id) do
-    should eq character_xml.locate("bloodlineID/?[0]").first.to_i
-  end
-
-  its(:bloodline) do
-    should eq character_xml.locate("bloodline/?[0]").first
-  end
-
-  its(:ancestry_id) do
-    should eq character_xml.locate("ancestryID/?[0]").first.to_i
-  end
-
-  its(:ancestry) do
-    should eq character_xml.locate("ancestry/?[0]").first
-  end
-
-  its(:corporation_id) do
-    should eq character_xml.locate("corporationID/?[0]").first.to_i
-  end
-
-  its(:corporation) do
-    should eq character_xml.locate("corporation/?[0]").first
-  end
-
-  its(:corporation_date) do
-    should eq character_xml.locate("corporationDate/?[0]").first
-  end
-
-  its(:security_status) do
-    should eq character_xml.locate("securityStatus/?[0]").first.to_f
-  end
+  its(:character_id) { should eq character_id }
+  its(:character_name) { should eq "Zaphoon" }
+  its(:race) { should eq "Caldari" }
+  its(:bloodline_id) { should eq 2 }
+  its(:bloodline) { should eq "Civire" }
+  its(:ancestry_id) { should eq 7 }
+  its(:ancestry) { should eq "Entrepreneurs" }
+  its(:corporation_id) { should eq 98063277 }
+  its(:corporation) { should eq "Archon Corporation" }
+  its(:corporation_date) { should eq "2016-07-24 02:57:00" }
+  its(:security_status) { should eq 2.40297246280317 }
 end

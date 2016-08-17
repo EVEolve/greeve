@@ -1,6 +1,20 @@
 describe Greeve::BaseItem do
-  let(:character_xml) {
-    load_xml_file("public_character_info", xpath: "result")
+  let(:response_file) { "public_character_info" }
+  let(:character_xml) { load_xml_file(response_file) }
+  let(:character_id)  { 462421468 }
+
+  before {
+    stub_endpoint(
+      "#{Greeve::EVE_API_BASE_URL}/eve/CharacterInfo.xml.aspx?characterID=#{character_id}",
+      response_file
+    )
+
+    stub_endpoint(
+      %r{#{Greeve::EVE_API_BASE_URL}/test/endpoint.xml.aspx},
+      response_file
+    )
+
+    invalidate_remaining_endpoints
   }
 
   it "is an abstract class" do
@@ -13,20 +27,32 @@ describe Greeve::BaseItem do
         klass.class_eval do
           endpoint "eve/CharacterInfo"
 
-          attribute :character_id,    xpath: "characterID/?[0]",    type: :integer
-          attribute :character_name,  xpath: "characterName/?[0]",  type: :string
-          attribute :security_status, xpath: "securityStatus/?[0]", type: :numeric
+          attribute :character_id, xpath: "eveapi/result/characterID/?[0]", type: :integer
+          attribute :character_name, xpath: "eveapi/result/characterName/?[0]", type: :string
+          attribute :security_status, xpath: "eveapi/result/securityStatus/?[0]", type: :numeric
+
+          def initialize(character_id)
+            super(query_params: {"characterID" => character_id})
+          end
         end
       end
     }
 
-    let(:character_name_xpath) { "characterName/?[0]" }
+    let(:character_name_xpath) { "eveapi/result/characterName/?[0]" }
     let(:character_name) { character_xml.locate(character_name_xpath).first }
 
-    subject { subclass.new(character_xml) }
+    subject { subclass.new(character_id) }
 
     describe "DSL" do
-      let(:subclass) { Class.new(Greeve::BaseItem) }
+      let(:subclass) {
+        Class.new(Greeve::BaseItem).tap do |klass|
+          klass.class_eval do
+            def initialize(character_id)
+              super(query_params: {"characterID" => character_id})
+            end
+          end
+        end
+      }
 
       specify "endpoint" do
         subclass.class_eval do
@@ -40,6 +66,8 @@ describe Greeve::BaseItem do
         _character_name_xpath = character_name_xpath
 
         subclass.class_eval do
+          endpoint "eve/CharacterInfo"
+
           attribute :character_name, xpath: _character_name_xpath, type: :string
         end
 
@@ -47,13 +75,8 @@ describe Greeve::BaseItem do
       end  
     end
 
-    specify "#refresh is not implemented" do
-      expect { subject.refresh }.to raise_error NotImplementedError
-    end
-
-    specify "#cache_expired? is not implemented" do
-      expect { subject.cache_expired? }.to raise_error NotImplementedError
-    end
+    specify "refresh"
+    specify "cache_expired?"
 
     its(:inspect) do
       should include subject.object_id.to_s

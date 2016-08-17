@@ -24,20 +24,3 @@ module Greeve
   # Server resources.
   module Server; end
 end
-
-# ------------------------------------------------------------------------------
-# TODO: Remove
-
-# response = Typhoeus.get("#{BASE_URL}/CharacterInfo.xml.aspx?characterID=462421468")
-# character_info = Ox.parse(response.body)
-# result = character_info.locate("eveapi/result").first
-# c = Greeve::API::CharacterInfo.new(result)
-
-# require "pry"; binding.pry
-
-# ------------------------------------------------------------------------------
-
-# Class names should follow the API structure:
-#   Greeve::API::CallList
-#   Greeve::Character::AssetList
-#   Greeve::Eve::CharacterInfo

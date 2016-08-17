@@ -3,7 +3,6 @@ module Greeve
   # objects. This class is designed to be subclassed by classes representing
   # the specific EVE API resources.
   class BaseItem
-
     # A DSL method to map an XML attribute to a Ruby object.
     #
     # @param name [Symbol] the Ruby name for this attribute
@@ -54,45 +53,42 @@ module Greeve
     #   endpoint "eve/CharacterInfo"
     def self.endpoint(path)
       # Remove leading slash and file extension.
-      @endpoint = endpoint = path.gsub(/\A\/*(.*?)(?:\.xml)?(?:\.aspx)?\z/, '\1')
-
-      define_method(:endpoint) { endpoint }
-      private_class_method :endpoint
+      @endpoint = path.gsub(/\A\/*(.*?)(?:\.xml)?(?:\.aspx)?\z/, '\1')
     end
 
-    # @param xml_element [Ox::Element] the root XML element for this item
-    def initialize(xml_element)
-      @xml_element = xml_element
+    # @abstract Subclass and use the DSL methods to map API endpoints to objects
+    #
+    # @option opts [Hash<String, String>] :query_params a hash of HTTP query
+    #   params that specify how a value maps to the API request
+    #
+    # @example
+    #   super(query_params: {
+    #     "characterID" => character_id,
+    #   })
+    def initialize(opts = {})
+      @query_params = opts[:query_params] || {}
 
       raise TypeError, "Cannot instantiate an abstract class" \
         if self.class.superclass != Greeve::BaseItem
+
+      refresh
     end
 
     # Query the API, refreshing this object's data.
+    #
+    # @return true if the endpoint was fetched, false if the data is still cached
     def refresh
-      raise NotImplementedError
+      return false unless cache_expired?
+
+      fetch
+      true
     end
 
     # @return true if the API cache timer has expired and this object can
-    #   be refreshed.
+    #   be refreshed
     def cache_expired?
-      raise NotImplementedError
+      true # TODO: Implement
     end
-
-    # def get(endpoint, params = {})
-    #   url = "#{Greeve::API::BASE_URL}/#{endpoint}"
-
-    #   unless params.empty?
-    #     query_params =
-    #       params
-    #         .map { |k, v| "#{k}=#{v}" }
-    #         .join("&")
-
-    #     url = "#{url}?#{query_params}"
-    #   end
-
-    #   Typhoeus.get(url)
-    # end
 
     # :nodoc:
     def inspect
@@ -114,5 +110,34 @@ module Greeve
           .join("\n")
     end
 
+    private
+
+    # @return [String] the class's endpoint path
+    def endpoint
+      self.class.instance_variable_get(:@endpoint)
+    end
+
+    # Fetch data from the API HTTP endpoint.
+    def fetch
+      url = "#{Greeve::EVE_API_BASE_URL}/#{endpoint}.xml.aspx"
+      params = @query_params
+
+      unless params.empty?
+        query_params =
+          params
+            .map { |k, v| "#{k}=#{v}" }
+            .join("&")
+
+        url = "#{url}?#{query_params}"
+      end
+
+      response = Typhoeus.get(url)
+
+      # TODO: Use a better error class.
+      raise TypeError, "HTTP error #{response.code}" \
+        unless (200..299).include?(response.code.to_i)
+
+      @xml_element = Ox.parse(response.body)
+    end
   end
 end

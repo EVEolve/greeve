@@ -3,14 +3,14 @@ require "rspec/its"
 require "coveralls"
 require "fileutils"
 
-require_relative "xml_helpers"
+require_relative "helpers"
 
 Coveralls.wear!
 
 require "greeve"
 
 RSpec.configure do |c|
-  c.include XMLHelpers
+  c.include SpecHelpers
 
   # Enable "should" syntax
   c.expect_with(:rspec) { |c| c.syntax = [:should, :expect] }
