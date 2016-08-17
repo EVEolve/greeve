@@ -27,8 +27,8 @@ describe Greeve::BaseItem do
         klass.class_eval do
           endpoint "eve/CharacterInfo"
 
-          attribute :character_id, xpath: "eveapi/result/characterID/?[0]", type: :integer
-          attribute :character_name, xpath: "eveapi/result/characterName/?[0]", type: :string
+          attribute :character_id,    xpath: "eveapi/result/characterID/?[0]",    type: :integer
+          attribute :character_name,  xpath: "eveapi/result/characterName/?[0]",  type: :string
           attribute :security_status, xpath: "eveapi/result/securityStatus/?[0]", type: :numeric
 
           def initialize(character_id)

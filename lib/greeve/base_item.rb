@@ -1,3 +1,5 @@
+require "bigdecimal"
+
 module Greeve
   # An abstract class used to map XML responses from the EVE XML API into Ruby
   # objects. This class is designed to be subclassed by classes representing
@@ -35,7 +37,7 @@ module Greeve
         when :integer
           value.to_i
         when :numeric
-          value.to_f
+          BigDecimal.new(value)
         when :string
           value.to_s
         else

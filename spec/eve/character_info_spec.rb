@@ -23,5 +23,5 @@ describe Greeve::Eve::CharacterInfo do
   its(:corporation_id) { should eq 98063277 }
   its(:corporation) { should eq "Archon Corporation" }
   its(:corporation_date) { should eq "2016-07-24 02:57:00" }
-  its(:security_status) { should eq 2.40297246280317 }
+  its(:security_status) { should eq BigDecimal.new("2.40297246280317") }
 end

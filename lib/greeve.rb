@@ -1,3 +1,4 @@
+require "bigdecimal"
 require "ox"
 require "typhoeus"
 
