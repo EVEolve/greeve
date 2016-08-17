@@ -1,7 +1,7 @@
 describe Greeve::BaseItem do
   let(:response_file) { "public_character_info" }
-  let(:character_xml) { load_xml_file(response_file) }
   let(:character_id)  { 462421468 }
+  let(:character_name) { "Zaphoon" }
 
   before {
     stub_endpoint(
@@ -18,7 +18,7 @@ describe Greeve::BaseItem do
   }
 
   it "is an abstract class" do
-    expect { Greeve::BaseItem.new(character_xml) }.to raise_error(TypeError)
+    expect { Greeve::BaseItem.new(character_id) }.to raise_error(TypeError)
   end
 
   context "subclassed" do
@@ -37,9 +37,6 @@ describe Greeve::BaseItem do
         end
       end
     }
-
-    let(:character_name_xpath) { "eveapi/result/characterName/?[0]" }
-    let(:character_name) { character_xml.locate(character_name_xpath).first }
 
     subject { subclass.new(character_id) }
 
@@ -63,7 +60,7 @@ describe Greeve::BaseItem do
       end
 
       specify "attribute" do
-        _character_name_xpath = character_name_xpath
+        _character_name_xpath = "eveapi/result/characterName/?[0]"
 
         subclass.class_eval do
           endpoint "eve/CharacterInfo"
@@ -75,8 +72,31 @@ describe Greeve::BaseItem do
       end  
     end
 
-    specify "refresh"
-    specify "cache_expired?"
+    describe "cache_expired?" do
+      before {
+        # Replace `cachedUntil` with a mocked value.
+        subject.instance_variable_get(:@xml_element).tap do |xml|
+          xml.locate("eveapi/cachedUntil").first.tap do |e|
+            e.nodes.clear
+            e << cached_until.to_s.gsub(/ UTC$/, "")
+          end
+        end
+      }
+
+      describe "returns true if cache time is in the past" do
+        let(:cached_until) { (Time.now - 3600).utc }
+
+        its(:cache_expired?) { should be true }
+        its(:refresh) { should be true }
+      end
+
+      describe "returns false if cache time is in the future" do
+        let(:cached_until) { (Time.now + 3600).utc }
+
+        its(:cache_expired?) { should be false }
+        its(:refresh) { should be false }
+      end
+    end
 
     its(:inspect) do
       should include subject.object_id.to_s

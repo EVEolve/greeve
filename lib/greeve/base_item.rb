@@ -87,7 +87,16 @@ module Greeve
     # @return true if the API cache timer has expired and this object can
     #   be refreshed
     def cache_expired?
-      true # TODO: Implement
+      return true unless @xml_element
+
+      @xml_element.locate("eveapi/cachedUntil/?[0]").first.tap do |cached_until|
+        return true unless cached_until
+
+        expire_time = Time.parse(cached_until + " GMT")
+        return true if expire_time <= Time.now
+      end
+
+      false
     end
 
     # :nodoc:
