@@ -85,7 +85,8 @@ module Greeve
 
     # Query the API, refreshing this object's data.
     #
-    # @return true if the endpoint was fetched, false if the data is still cached
+    # @return true if the endpoint was fetched (HTTP request sent), false if
+    #   the cache hasn't expired
     def refresh
       return false unless cache_expired?
 
@@ -96,16 +97,16 @@ module Greeve
     # @return true if the API cache timer has expired and this object can
     #   be refreshed
     def cache_expired?
-      return true unless @xml_element
+      !(cached_until && cached_until > Time.now)
+    end
 
-      @xml_element.locate("eveapi/cachedUntil/?[0]").first.tap do |cached_until|
-        return true unless cached_until
+    # @return [Time, nil] time when the cache expires and the resource can be
+    #   refreshed (sends an HTTP request)
+    def cached_until
+      return unless @xml_element
 
-        expire_time = Time.parse(cached_until + " GMT")
-        return true if expire_time <= Time.now
-      end
-
-      false
+      _cached_until = @xml_element.locate("eveapi/cachedUntil/?[0]").first
+      _cached_until ? Time.parse(_cached_until + " UTC") : nil
     end
 
     # :nodoc:
