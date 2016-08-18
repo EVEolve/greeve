@@ -22,6 +22,6 @@ describe Greeve::Eve::CharacterInfo do
   its(:ancestry) { should eq "Entrepreneurs" }
   its(:corporation_id) { should eq 98063277 }
   its(:corporation) { should eq "Archon Corporation" }
-  its(:corporation_date) { should eq "2016-07-24 02:57:00" }
+  its(:corporation_date) { should eq Time.parse("2016-07-24 02:57:00 UTC") }
   its(:security_status) { should eq BigDecimal.new("2.40297246280317") }
 end

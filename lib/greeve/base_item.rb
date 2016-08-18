@@ -1,4 +1,5 @@
 require "bigdecimal"
+require "time"
 
 module Greeve
   # An abstract class used to map XML responses from the EVE XML API into Ruby
@@ -44,6 +45,8 @@ module Greeve
             BigDecimal.new(value)
           when :string
             value.to_s
+          when :datetime
+            Time.parse(value + " UTC")
           end
 
         instance_variable_set(:"@#{name}", value)

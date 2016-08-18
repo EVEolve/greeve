@@ -27,9 +27,10 @@ describe Greeve::BaseItem do
         klass.class_eval do
           endpoint "eve/CharacterInfo"
 
-          attribute :character_id,    xpath: "eveapi/result/characterID/?[0]",    type: :integer
-          attribute :character_name,  xpath: "eveapi/result/characterName/?[0]",  type: :string
-          attribute :security_status, xpath: "eveapi/result/securityStatus/?[0]", type: :numeric
+          attribute :character_id,     xpath: "eveapi/result/characterID/?[0]",     type: :integer
+          attribute :character_name,   xpath: "eveapi/result/characterName/?[0]",   type: :string
+          attribute :corporation_date, xpath: "eveapi/result/corporationDate/?[0]", type: :datetime
+          attribute :security_status,  xpath: "eveapi/result/securityStatus/?[0]",  type: :numeric
 
           def initialize(character_id)
             super(query_params: {"characterID" => character_id})
@@ -69,7 +70,14 @@ describe Greeve::BaseItem do
         end
 
         subject.character_name.should eq character_name
-      end  
+      end
+    end
+
+    describe "attribute types" do
+      its(:character_id) { should be_a Integer }
+      its(:character_name) { should be_a String }
+      its(:corporation_date) { should be_a Time }
+      its(:security_status) { should be_a BigDecimal }
     end
 
     describe "cache_expired?" do

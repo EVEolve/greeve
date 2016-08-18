@@ -15,7 +15,7 @@ module Greeve
       attribute :ancestry,         xpath: "eveapi/result/ancestry/?[0]",        type: :string
       attribute :corporation_id,   xpath: "eveapi/result/corporationID/?[0]",   type: :integer
       attribute :corporation,      xpath: "eveapi/result/corporation/?[0]",     type: :string
-      attribute :corporation_date, xpath: "eveapi/result/corporationDate/?[0]", type: :string
+      attribute :corporation_date, xpath: "eveapi/result/corporationDate/?[0]", type: :datetime
       attribute :security_status,  xpath: "eveapi/result/securityStatus/?[0]",  type: :numeric
 
       # @param character_id [Integer] EVE character ID
