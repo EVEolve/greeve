@@ -31,18 +31,22 @@ module Greeve
       }
 
       define_method(name) do
+        ivar = instance_variable_get(:"@#{name}")
+        return ivar unless ivar.nil?
+
         value = @xml_element.locate(opts[:xpath]).first
 
-        case opts[:type]
-        when :integer
-          value.to_i
-        when :numeric
-          BigDecimal.new(value)
-        when :string
-          value.to_s
-        else
-          value
-        end
+        value =
+          case opts[:type]
+          when :integer
+            value.to_i
+          when :numeric
+            BigDecimal.new(value)
+          when :string
+            value.to_s
+          end
+
+        instance_variable_set(:"@#{name}", value)
       end
     end
 
@@ -116,12 +120,17 @@ module Greeve
     # :nodoc:
     def to_s
       attrs =
-        self.class.instance_variable_get(:@attributes)
+        attributes
           .map { |name, opts| "#{name}: #{__send__(name)}" }
           .join("\n")
     end
 
     private
+
+    # @return [Hash] the hash of attributes for this object
+    def attributes
+      self.class.instance_variable_get(:@attributes) || {}
+    end
 
     # @return [String] the class's endpoint path
     def endpoint
@@ -149,6 +158,12 @@ module Greeve
         unless (200..299).include?(response.code.to_i)
 
       @xml_element = Ox.parse(response.body)
+
+      attributes.keys.each do |name|
+        instance_variable_set(:"@#{name}", nil)
+      end
+
+      @xml_element
     end
   end
 end
