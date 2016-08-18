@@ -37,17 +37,19 @@ module Greeve
 
         value = @xml_element.locate(opts[:xpath]).first
 
-        value =
-          case opts[:type]
-          when :integer
-            value.to_i
-          when :numeric
-            BigDecimal.new(value)
-          when :string
-            value.to_s
-          when :datetime
-            Time.parse(value + " UTC")
-          end
+        unless value.nil?
+          value =
+            case opts[:type]
+            when :integer
+              value.to_i
+            when :numeric
+              BigDecimal.new(value)
+            when :string
+              value.to_s
+            when :datetime
+              Time.parse(value + " UTC")
+            end
+        end
 
         instance_variable_set(:"@#{name}", value)
       end
@@ -121,12 +123,21 @@ module Greeve
       "#<#{self.class.name}:#{object_id}#{attrs}>"
     end
 
-    # :nodoc:
+    # @return [String] a string representation of the non-nil attributes
     def to_s
       attrs =
-        attributes
-          .map { |name, opts| "#{name}: #{__send__(name)}" }
+        to_h
+          .map { |k, v| "#{k}: #{v}" }
           .join("\n")
+    end
+
+    # @return [Hash] a hash of non-nil attributes
+    def to_h
+      attributes
+        .keys
+        .map { |name| [name, __send__(name)] }
+        .to_h
+        .reject { |k, v| v.nil? }
     end
 
     private

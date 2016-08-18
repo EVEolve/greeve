@@ -31,6 +31,7 @@ describe Greeve::BaseItem do
           attribute :character_name,   xpath: "eveapi/result/characterName/?[0]",   type: :string
           attribute :corporation_date, xpath: "eveapi/result/corporationDate/?[0]", type: :datetime
           attribute :security_status,  xpath: "eveapi/result/securityStatus/?[0]",  type: :numeric
+          attribute :does_not_exist,   xpath: "does_not_exist/?[0]",                type: :string
 
           def initialize(character_id)
             super(query_params: {"characterID" => character_id})
@@ -113,6 +114,15 @@ describe Greeve::BaseItem do
 
     its(:to_s) do
       should include "character_name: #{character_name}"
+    end
+
+    its(:to_h) do
+      should eq({
+        character_id: character_id,
+        character_name: "Zaphoon",
+        corporation_date: Time.parse("2016-07-24 02:57:00 UTC"),
+        security_status: BigDecimal.new("2.40297246280317"),
+      })
     end
   end
 end
