@@ -1,6 +1,8 @@
 require "bigdecimal"
 require "time"
 
+require_relative "rowset"
+
 module Greeve
   # An abstract class used to map XML responses from the EVE XML API into Ruby
   # objects. This class is designed to be subclassed by classes representing
@@ -14,8 +16,6 @@ module Greeve
     #   in the XML element
     # @option opts [:integer, :numeric, :string] :type method used to coerce the
     #   XML value
-    #
-    # @return the value located at the xpath
     #
     # @example
     #   attribute :character_id, xpath: "characterID/?[0]", type: :integer
@@ -52,6 +52,52 @@ module Greeve
         end
 
         instance_variable_set(:"@#{name}", value)
+      end
+    end
+
+    # A DSL method to map an XML rowset to a Ruby object.
+    #
+    # @param name [Symbol] the Ruby name for this attribute
+    #
+    # @option opts [Symbol] :xpath the xpath string used to locate the attribute
+    #   in the XML element
+    #
+    # @example
+    #   rowset :employment_history, xpath: "eveapi/result/rowset[@name='employmentHistory']" do
+    #     attribute :record_id,        xpath: "@recordID",        type: :integer
+    #     attribute :corporation_id,   xpath: "@corporationID",   type: :integer
+    #     attribute :corporation_name, xpath: "@corporationName", type: :string
+    #     attribute :start_date,       xpath: "@startDate",       type: :datetime
+    #   end
+    def self.rowset(name, opts = {}, &block)
+      name = name.to_sym
+      @attributes ||= {}
+
+      raise "Attribute `#{name}` defined more than once" if @attributes[name]
+      raise "`:xpath` not specified for `#{name}`" unless opts[:xpath]
+
+      @attributes[name] = {
+        xpath: opts[:xpath],
+        type: :rowset,
+      }
+
+      define_method(name) do
+        ivar = instance_variable_get(:"@#{name}")
+        return ivar unless ivar.nil?
+
+        # Since Ox doesn't support the xpath [@k='v'] syntax, parse it out
+        # with a regex (captures :path, :attr, :attr_value).
+        attr_regex = %r{\A(?<path>.*?)\[@(?<attr>\w+)=['"](?<attr_value>\w+)['"]\]\z}
+        match = opts[:xpath].match(attr_regex)
+
+        rowset_element =
+          @xml_element
+            .locate(match[:path])
+            .find { |e| e.attributes[match[:attr].to_sym] == match[:attr_value] }
+
+        rowset = Rowset.new(name, rowset_element, &block)
+
+        instance_variable_set(:"@#{name}", rowset)
       end
     end
 
@@ -125,17 +171,21 @@ module Greeve
 
     # @return [String] a string representation of the non-nil attributes
     def to_s
-      attrs =
-        to_h
-          .map { |k, v| "#{k}: #{v}" }
-          .join("\n")
+      to_h
+        .map { |k, v| "#{k}: #{v}" }
+        .join("\n")
     end
 
     # @return [Hash] a hash of non-nil attributes
     def to_h
       attributes
         .keys
-        .map { |name| [name, __send__(name)] }
+        .map { |name|
+          value = __send__(name)
+          value = value.to_a if value.is_a?(Rowset)
+
+          [name, value]
+        }
         .to_h
         .reject { |k, v| v.nil? }
     end

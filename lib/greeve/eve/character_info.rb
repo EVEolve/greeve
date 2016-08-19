@@ -18,6 +18,13 @@ module Greeve
       attribute :corporation_date, xpath: "eveapi/result/corporationDate/?[0]", type: :datetime
       attribute :security_status,  xpath: "eveapi/result/securityStatus/?[0]",  type: :numeric
 
+      rowset :employment_history, xpath: "eveapi/result/rowset[@name='employmentHistory']" do
+        attribute :record_id,        xpath: "@recordID",        type: :integer
+        attribute :corporation_id,   xpath: "@corporationID",   type: :integer
+        attribute :corporation_name, xpath: "@corporationName", type: :string
+        attribute :start_date,       xpath: "@startDate",       type: :datetime
+      end
+
       # @param character_id [Integer] EVE character ID
       def initialize(character_id)
         super(query_params: {

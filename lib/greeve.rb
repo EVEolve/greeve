@@ -5,6 +5,8 @@ require "typhoeus"
 require_relative "greeve/version"
 
 require_relative "greeve/base_item"
+require_relative "greeve/row"
+require_relative "greeve/rowset"
 require_relative "greeve/eve/character_info"
 
 # A Ruby wrapper for the EVE Online XML API.

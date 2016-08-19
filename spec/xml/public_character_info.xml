@@ -16,9 +16,6 @@
     <rowset name="employmentHistory" key="recordID" columns="recordID,corporationID,corporationName,startDate">
       <row recordID="42416328" corporationID="98063277" corporationName="Archon Corporation" startDate="2016-07-24 02:57:00" />
       <row recordID="34716213" corporationID="1000009" corporationName="Caldari Provisions" startDate="2014-08-25 00:54:00" />
-      <row recordID="22241242" corporationID="1706874165" corporationName="Rock Grinders" startDate="2013-01-20 03:48:00" />
-      <row recordID="17736362" corporationID="98063277" corporationName="Archon Corporation" startDate="2011-08-27 17:36:00" />
-      <row recordID="12785659" corporationID="1000167" corporationName="State War Academy" startDate="2010-01-27 03:14:00" />
     </rowset>
   </result>
   <cachedUntil>2016-08-17 02:46:25</cachedUntil>

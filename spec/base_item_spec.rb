@@ -40,7 +40,8 @@ describe Greeve::BaseItem do
       end
     }
 
-    subject { subclass.new(character_id) }
+    let(:api_item) { subclass.new(character_id) }
+    subject { api_item }
 
     describe "DSL" do
       let(:subclass) {
@@ -71,6 +72,44 @@ describe Greeve::BaseItem do
         end
 
         subject.character_name.should eq character_name
+      end
+
+      describe "rowset" do
+        let(:rowset) { api_item.employment_history }
+        subject { rowset }
+
+        before {
+          subclass.class_eval do
+            endpoint "eve/CharacterInfo"
+
+            rowset :employment_history, xpath: "eveapi/result/rowset[@name='employmentHistory']" do
+              attribute :record_id,        xpath: "@recordID",        type: :integer
+              attribute :corporation_id,   xpath: "@corporationID",   type: :integer
+              attribute :corporation_name, xpath: "@corporationName", type: :string
+              attribute :start_date,       xpath: "@startDate",       type: :datetime
+            end
+          end
+        }
+
+        it { should be_a Greeve::Rowset }
+        its(:name) { should eq :employment_history }
+
+        its(:to_a) do
+          should eq [
+            {
+              record_id: 42416328,
+              corporation_id: 98063277,
+              corporation_name: "Archon Corporation",
+              start_date: Time.parse("2016-07-24 02:57:00 UTC"),
+            },
+            {
+              record_id: 34716213,
+              corporation_id: 1000009,
+              corporation_name: "Caldari Provisions",
+              start_date: Time.parse("2014-08-25 00:54:00 UTC"),
+            },
+          ]
+        end
       end
     end
 
