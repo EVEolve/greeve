@@ -12,19 +12,26 @@ module SpecHelpers
   def stub_endpoint(endpoint, response_file, opts = {})
     code = opts[:code] || 200
 
-    Typhoeus
-      .stub(endpoint)
-      .and_return(
-        Typhoeus::Response.new(code: code, body:  load_file(response_file))
-      )
+    typhoeus_opts = {
+      params: opts[:params],
+      headers: opts[:headers],
+    }
+
+    allow(Typhoeus).to receive(:get) {
+      Typhoeus::Response.new(code: code, body: load_file(response_file))
+    }
   end
 
   # Stub out the remaining HTTP endpoints with 500 errors so that live HTTP
   # requests aren't sent.
   def invalidate_remaining_endpoints
-    Typhoeus
-      .stub(/.*/)
-      .and_return(Typhoeus::Response.new(code: 500))
+    # TODO: Figure out a better stubbing strategy, because Typhoeus.stub isn't
+    #   playing nicely with RSpec.
+    return
+
+    # Typhoeus
+    #   .stub(/.*/)
+    #   .and_return(Typhoeus::Response.new(code: 500))
   end
 
   # Load an XML file as a string.

@@ -115,6 +115,8 @@ module Greeve
 
     # @abstract Subclass and use the DSL methods to map API endpoints to objects
     #
+    # @option opts [String, Fixnum] :key API key
+    # @option opts [String] :vcode API vCode
     # @option opts [Hash<String, String>] :query_params a hash of HTTP query
     #   params that specify how a value maps to the API request
     #
@@ -123,6 +125,8 @@ module Greeve
     #     "characterID" => character_id,
     #   })
     def initialize(opts = {})
+      @api_key = opts[:key]
+      @api_vcode = opts[:vcode]
       @query_params = opts[:query_params] || {}
 
       raise TypeError, "Cannot instantiate an abstract class" \
@@ -208,18 +212,17 @@ module Greeve
     # Fetch data from the API HTTP endpoint.
     def fetch
       url = "#{Greeve::EVE_API_BASE_URL}/#{endpoint}.xml.aspx"
-      params = @query_params
 
-      unless params.empty?
-        query_params =
-          params
-            .map { |k, v| "#{k}=#{v}" }
-            .join("&")
+      query_params = @query_params
 
-        url = "#{url}?#{query_params}"
+      if @api_key && @api_vcode
+        query_params.merge!({
+          "keyID" => @api_key,
+          "vCode" => @api_vcode,
+        })
       end
 
-      response = Typhoeus.get(url)
+      response = Typhoeus.get(url, params: query_params)
 
       # TODO: Use a better error class.
       raise TypeError, "HTTP error #{response.code}" \
