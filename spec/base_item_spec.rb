@@ -149,6 +149,8 @@ describe Greeve::BaseItem do
     its(:inspect) do
       should include subject.object_id.to_s
       should include "character_name: #{character_name}"
+      should include "corporation_date: 2016-07-24 02:57:00 UTC"
+      should include "security_status: 2.40297246280317"
     end
 
     its(:to_s) do

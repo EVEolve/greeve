@@ -48,7 +48,10 @@ module Greeve
     # @return [String] a string representation of the non-nil attributes
     def to_s
       to_h
-        .map { |k, v| "#{k}: #{v}" }
+        .map { |k, v|
+          v = v.to_s("F") if v.is_a?(BigDecimal)
+          "#{k}: #{v}"
+        }
         .join("\n")
     end
 
