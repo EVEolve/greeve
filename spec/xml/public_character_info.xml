@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2016-08-17 01:49:25</currentTime>
+  <result>
+    <characterID>462421468</characterID>
+    <characterName>Zaphoon</characterName>
+    <race>Caldari</race>
+    <bloodlineID>2</bloodlineID>
+    <bloodline>Civire</bloodline>
+    <ancestryID>7</ancestryID>
+    <ancestry>Entrepreneurs</ancestry>
+    <corporationID>98063277</corporationID>
+    <corporation>Archon Corporation</corporation>
+    <corporationDate>2016-07-24 02:57:00</corporationDate>
+    <securityStatus>2.40297246280317</securityStatus>
+    <rowset name="employmentHistory" key="recordID" columns="recordID,corporationID,corporationName,startDate">
+      <row recordID="42416328" corporationID="98063277" corporationName="Archon Corporation" startDate="2016-07-24 02:57:00" />
+      <row recordID="34716213" corporationID="1000009" corporationName="Caldari Provisions" startDate="2014-08-25 00:54:00" />
+    </rowset>
+  </result>
+  <cachedUntil>2016-08-17 02:46:25</cachedUntil>
+</eveapi>
