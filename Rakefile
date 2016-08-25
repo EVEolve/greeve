@@ -1,5 +1,6 @@
 require "rspec/core/rake_task"
 require "yard"
+require_relative "handlers/attribute"
 
 task :default => [:test, :check_docs]
 
