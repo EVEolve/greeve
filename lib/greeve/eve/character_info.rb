@@ -3,6 +3,8 @@ require_relative "../base_item"
 module Greeve
   module Eve
     # Public character info.
+    #
+    # @see https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/eve/eve_characterinfo.html
     class CharacterInfo < Greeve::BaseItem
       endpoint "eve/CharacterInfo"
 

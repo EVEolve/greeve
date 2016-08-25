@@ -1,6 +1,7 @@
 require "rspec/core/rake_task"
 require "yard"
-require_relative "handlers/attribute"
+
+Dir["handlers/**/*.rb"].each { |handler| require_relative handler }
 
 task :default => [:test, :check_docs]
 
