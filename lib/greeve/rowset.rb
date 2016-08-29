@@ -42,7 +42,7 @@ module Greeve
     # Map an XML attribute to a Ruby object.
     #
     # @!visibility private
-    # @see {Greeve::BaseItem.attribute}
+    # @see Greeve::BaseItem.attribute
     def attribute(name, opts = {})
       name = name.to_sym
 
