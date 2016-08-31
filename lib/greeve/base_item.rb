@@ -1,6 +1,8 @@
 require "bigdecimal"
 require "time"
 
+require_relative "helpers/add_attribute"
+require_relative "helpers/define_attribute_method"
 require_relative "rowset"
 
 module Greeve
@@ -8,6 +10,9 @@ module Greeve
   # objects. This class is designed to be subclassed by classes representing
   # the specific EVE API resources.
   class BaseItem
+    extend Greeve::Helpers::AddAttribute
+    extend Greeve::Helpers::DefineAttributeMethod
+
     # A DSL method to map an XML attribute to a Ruby object.
     #
     # @param name [Symbol] the Ruby name for this attribute
@@ -20,39 +25,10 @@ module Greeve
     # @example
     #   attribute :character_id, xpath: "characterID/?[0]", type: :integer
     def self.attribute(name, opts = {})
-      name = name.to_sym
       @attributes ||= {}
 
-      raise "Attribute `#{name}` defined more than once" if @attributes[name]
-      raise "`:xpath` not specified for `#{name}`" unless opts[:xpath]
-
-      @attributes[name] = {
-        xpath: opts[:xpath],
-        type: opts[:type],
-      }
-
-      define_method(name) do
-        ivar = instance_variable_get(:"@#{name}")
-        return ivar unless ivar.nil?
-
-        value = @xml_element.locate(opts[:xpath]).first
-
-        unless value.nil?
-          value =
-            case opts[:type]
-            when :integer
-              value.to_i
-            when :numeric
-              BigDecimal.new(value)
-            when :string
-              value.to_s
-            when :datetime
-              Time.parse(value + " UTC")
-            end
-        end
-
-        instance_variable_set(:"@#{name}", value)
-      end
+      add_attribute(name, opts)
+      define_attribute_method(:class, name, opts)
     end
 
     # A DSL method to map an XML rowset to a Ruby object.
