@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2016-09-03 20:25:07</currentTime>
+  <result>
+    <rowset name="solarSystems" key="solarSystemID" columns="solarSystemID,shipKills,factionKills,podKills">
+      <row solarSystemID="30045307" shipKills="2" factionKills="10" podKills="1" />
+      <row solarSystemID="30001414" shipKills="0" factionKills="41" podKills="0" />
+      <row solarSystemID="30000109" shipKills="0" factionKills="51" podKills="0" />
+      <row solarSystemID="30004377" shipKills="0" factionKills="196" podKills="0" />
+      <row solarSystemID="30003026" shipKills="0" factionKills="53" podKills="0" />
+      <row solarSystemID="30003575" shipKills="0" factionKills="46" podKills="0" />
+      <row solarSystemID="30003527" shipKills="0" factionKills="14" podKills="0" />
+      <row solarSystemID="30002224" shipKills="0" factionKills="26" podKills="0" />
+    </rowset>
+    <dataTime>2016-09-03 20:25:07</dataTime>
+  </result>
+  <cachedUntil>2016-09-03 21:21:30</cachedUntil>
+</eveapi>
