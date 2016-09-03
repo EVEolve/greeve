@@ -27,6 +27,8 @@ module Greeve
                 value.to_i
               when :numeric
                 BigDecimal.new(value)
+              when :boolean
+                value.downcase == "true"
               when :string
                 value.to_s
               when :datetime
