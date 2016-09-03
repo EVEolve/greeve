@@ -1,8 +1,10 @@
+require_relative "helpers/add_attribute"
 require_relative "row"
 
 module Greeve
   # Represents an XML `rowset` element.
   class Rowset
+    include Greeve::Helpers::AddAttribute
     include Enumerable
 
     # @return [Symbol] name of the rowset
@@ -42,18 +44,8 @@ module Greeve
     # Map an XML attribute to a Ruby object.
     #
     # @!visibility private
-    # @see Greeve::BaseItem.attribute
-    def attribute(name, opts = {})
-      name = name.to_sym
-
-      raise "Attribute `#{name}` defined more than once" if @attributes[name]
-      raise "`:xpath` not specified for `#{name}`" unless opts[:xpath]
-
-      @attributes[name] = {
-        xpath: opts[:xpath],
-        type: opts[:type],
-      }
-    end
+    # @see Greeve::Attributable#add_attribute
+    alias_method :attribute, :add_attribute
 
     private
 

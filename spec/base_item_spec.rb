@@ -113,13 +113,6 @@ describe Greeve::BaseItem do
       end
     end
 
-    describe "attribute types" do
-      its(:character_id) { should be_a Integer }
-      its(:character_name) { should be_a String }
-      its(:corporation_date) { should be_a Time }
-      its(:security_status) { should be_a BigDecimal }
-    end
-
     describe "cache_expired?" do
       before {
         # Replace `cachedUntil` with a mocked value.
