@@ -14,6 +14,7 @@ require_relative "greeve/eve/character_info"
 require_relative "greeve/map/jumps"
 require_relative "greeve/map/kills"
 require_relative "greeve/map/sovereignty"
+require_relative "greeve/server/server_status"
 
 # A Ruby wrapper for the EVE Online XML API.
 module Greeve
