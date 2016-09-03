@@ -25,6 +25,22 @@ describe Greeve::Helpers::DefineAttributeMethod do
       include_examples :can_define_an_attribute, :numeric, BigDecimal
     end
 
+    describe "boolean attribute" do
+      describe "true" do
+        let(:value) { "True" }
+        let(:expected) { true }
+
+        include_examples :can_define_an_attribute, :boolean, TrueClass
+      end
+
+      describe "false" do
+        let(:value) { "False" }
+        let(:expected) { false }
+
+        include_examples :can_define_an_attribute, :boolean, FalseClass
+      end
+    end
+
     describe "string attribute" do
       let(:value) { "3" }
       let(:expected) { "3" }
