@@ -31,3 +31,65 @@ Note that the `7.46.0` release seems to be the latest one with the precompiled
 DLL. `7.50.1` was packaged differently and must be compiled first, which is out
 of the scope of this documentation. Refer to [libcurl](https://curl.haxx.se/libcurl/)
 for additional information about installation on Windows.
+
+## Documentation
+
+Greeve's namespacing and attributes attempt to follow the [EVE Online Developer
+Documentation](https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/index.html)
+as closely as possible. Ideally this means you can figure out the Greeve API
+if you're familiar with the developer docs. Of course, the [Greeve API](http://www.rubydoc.info/gems/greeve)
+is also documented.
+
+### Reading The Source Code
+
+The source code for each EVE XML API endpoint was designed to be easy to read
+and self-documenting. This project implements a [domain-specific language](https://en.wikipedia.org/wiki/Domain-specific_language) 
+(DSL) to help make this possible. The DSL provides methods like `attribute` and
+`rowset` to describe the XML and map it to a Ruby object.
+
+```ruby
+module Greeve
+  module Server
+    class ServerStatus < Greeve::BaseItem
+      endpoint "server/ServerStatus"
+
+      attribute :server_open,    xpath: "eveapi/result/serverOpen/?[0]",    type: :boolean
+      attribute :online_players, xpath: "eveapi/result/onlinePlayers/?[0]", type: :integer
+    end
+  end
+end
+```
+
+Compare this code to the [ServerStatus developer documentation](https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/server/serv_serverstatus.html)
+and it should be easy to see how the data is mapped.
+
+### Generating Offline Documentation
+
+Unfortunately [rubydoc.info](http://www.rubydoc.info/gems/greeve) doesn't
+execute custom handlers, which Greeve uses to document the DSL helpers like
+`attribute` and `rowset`. This can make it difficult to see which attributes a
+resource implements without looking at the source code. A better way is to
+generate the API documentation locally on your computer.
+
+First, clone down a copy of the Greeve repository:
+
+```text
+git clone https://github.com/EVEolve/greeve.git
+cd greeve
+```
+
+Make sure [bundler](http://bundler.io/) is installed, and install the
+gems for the repo:
+
+```text
+gem install bundler
+bundle install
+```
+
+Generate the documentation:
+
+```text
+bundle exec rake doc
+```
+
+The documentation is now located at `doc/index.html`
