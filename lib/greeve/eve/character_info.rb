@@ -2,7 +2,8 @@ require_relative "../base_item"
 
 module Greeve
   module Eve
-    # Public character info.
+    # Information about the character. Has three data sets it can return
+    # depending on the access mask.
     #
     # @see https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/eve/eve_characterinfo.html
     class CharacterInfo < Greeve::BaseItem

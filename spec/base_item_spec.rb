@@ -1,5 +1,5 @@
 describe Greeve::BaseItem do
-  let(:response_file) { "public_character_info" }
+  let(:response_file) { "eve/character_info" }
   let(:character_id)  { 462421468 }
   let(:character_name) { "Zaphoon" }
 
