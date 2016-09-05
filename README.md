@@ -8,6 +8,12 @@
 
 A Ruby wrapper for the [EVE Online XML API](https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/index.html).
 
+```ruby
+c = Greeve::Eve::CharacterInfo.new(462421468, key: 1234567, vcode: "abcdefg")
+p c.character_name # => "Zaphoon"
+p c.ship_type_name # => "Manticore"
+```
+
 ## Installation
 
 ```text
@@ -93,3 +99,34 @@ bundle exec rake doc
 ```
 
 The documentation is now located at `doc/index.html`
+
+## Usage
+
+Since Greeve mirrors the EVE XML API namespace, the server status can be queried
+by instantiating the [Server::ServerStatus](https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/server/serv_serverstatus.html)
+resource.
+
+```ruby
+require "greeve"
+
+server = Greeve::Server::ServerStatus.new
+p server.server_open    # => true
+p server.online_players # => 27421
+```
+
+One difference between the EVE developer documentation is that Greeve follows
+Ruby naming conventions and therefore uses snake case (`server_open`) for the
+attribute names instead of the camel case (`serverOpen`) convention used in
+the XML.
+
+### Using An API Key
+
+When accessing a resource that requires an API key, pass the `key` and `vcode`
+into the constructor's `opts`. These parameters can be passed to any resource.
+An API key can be obtained from the [EVE API Key Management webpage](https://community.eveonline.com/support/api-key/).
+
+```ruby
+c = Greeve::Eve::CharacterInfo.new(462421468, key: 1234567, vcode: "abcdefg")
+p c.character_name # => "Zaphoon"
+p c.ship_type_name # => "Manticore"
+```
