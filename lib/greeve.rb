@@ -10,6 +10,7 @@ require_relative "greeve/helpers/define_attribute_method"
 require_relative "greeve/base_item"
 require_relative "greeve/row"
 require_relative "greeve/rowset"
+require_relative "greeve/account/account_status"
 require_relative "greeve/api/call_list"
 require_relative "greeve/character/account_balance"
 require_relative "greeve/character/blueprints"
@@ -30,6 +31,8 @@ module Greeve
   # Base URL of the EVE XML API.
   EVE_API_BASE_URL = "https://api.eveonline.com".freeze
 
+  # Account resources.
+  module Account; end
   # API resources.
   module API; end
   # Character resources.
