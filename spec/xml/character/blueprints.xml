@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2016-09-04 02:13:14</currentTime>
+  <result>
+    <rowset name="blueprints" key="itemID" columns="itemID,locationID,typeID,typeName,flagID,quantity,timeEfficiency,materialEfficiency,runs">
+      <row itemID="1017507380602" locationID="1021770302509" typeID="34497" typeName="Council Diplomatic Shuttle Blueprint" flagID="64" quantity="-2" timeEfficiency="0" materialEfficiency="0" runs="10" />
+      <row itemID="1021674487835" locationID="60011998" typeID="4410" typeName="Target Spectrum Breaker Blueprint" flagID="4" quantity="-2" timeEfficiency="0" materialEfficiency="0" runs="10" />
+      <row itemID="1021674487837" locationID="60011998" typeID="33102" typeName="Medium Ancillary Armor Repairer Blueprint" flagID="4" quantity="-2" timeEfficiency="0" materialEfficiency="0" runs="3" />
+      <row itemID="1021769774586" locationID="60014485" typeID="17483" typeName="Strip Miner I Blueprint" flagID="4" quantity="-1" timeEfficiency="0" materialEfficiency="10" runs="-1" />
+      <row itemID="1021769800898" locationID="60014485" typeID="1076" typeName="Survey Scanner I Blueprint" flagID="4" quantity="-1" timeEfficiency="0" materialEfficiency="10" runs="-1" />
+    </rowset>
+  </result>
+  <cachedUntil>2016-09-04 11:26:27</cachedUntil>
+</eveapi>
