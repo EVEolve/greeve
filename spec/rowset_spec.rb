@@ -1,6 +1,6 @@
 describe Greeve::Rowset do
   let(:xml_element) {
-    load_xml_file("public_character_info")
+    load_xml_file("eve/character_info")
       .locate("eveapi/result/rowset")
       .first
   }
