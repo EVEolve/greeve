@@ -22,10 +22,6 @@ module Greeve
         attribute :group_id,    xpath: "@groupID",     type: :integer
         attribute :description, xpath: "@description", type: :string
       end
-
-      def initialize(opts = {})
-        super(opts)
-      end
     end
   end
 end

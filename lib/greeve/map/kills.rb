@@ -16,10 +16,6 @@ module Greeve
         attribute :faction_kills,   xpath: "@factionKills",  type: :integer
         attribute :pod_kills,       xpath: "@podKills",      type: :integer
       end
-
-      def initialize(opts = {})
-        super(opts)
-      end
     end
   end
 end

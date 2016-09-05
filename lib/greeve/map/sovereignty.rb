@@ -16,10 +16,6 @@ module Greeve
         attribute :corporation_id,    xpath: "@corporationID",   type: :integer
         attribute :solar_system_name, xpath: "@solarSystemName", type: :string
       end
-
-      def initialize(opts = {})
-        super(opts)
-      end
     end
   end
 end
