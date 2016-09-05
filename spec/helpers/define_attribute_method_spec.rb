@@ -39,6 +39,20 @@ describe Greeve::Helpers::DefineAttributeMethod do
 
         include_examples :can_define_an_attribute, :boolean, FalseClass
       end
+
+      describe "1" do
+        let(:value) { "1" }
+        let(:expected) { true }
+
+        include_examples :can_define_an_attribute, :boolean, TrueClass
+      end
+
+      describe "0" do
+        let(:value) { "0" }
+        let(:expected) { false }
+
+        include_examples :can_define_an_attribute, :boolean, FalseClass
+      end
     end
 
     describe "string attribute" do
