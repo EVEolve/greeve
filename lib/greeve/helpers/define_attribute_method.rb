@@ -32,7 +32,7 @@ module Greeve
               when :string
                 value.to_s
               when :datetime
-                Time.parse(value + " UTC")
+                value.empty? ? nil : Time.parse(value + " UTC")
               end
           end
 

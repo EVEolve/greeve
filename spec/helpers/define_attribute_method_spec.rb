@@ -67,6 +67,13 @@ describe Greeve::Helpers::DefineAttributeMethod do
       let(:expected) { Time.parse("2016-07-24 02:57:00 UTC") }
 
       include_examples :can_define_an_attribute, :datetime, Time
+
+      context "is empty" do
+        let(:value) { "" }
+        let(:expected) { nil }
+
+        include_examples :can_define_an_attribute, :datetime, NilClass
+      end
     end
   end
 
