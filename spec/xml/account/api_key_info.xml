@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2016-09-05 20:21:35</currentTime>
+  <result>
+    <key accessMask="4294967295" type="Account" expires="">
+      <rowset name="characters" key="characterID" columns="characterID,characterName,corporationID,corporationName,allianceID,allianceName,factionID,factionName">
+        <row characterID="462421468" characterName="Zaphoon" corporationID="98063277" corporationName="Archon Corporation" allianceID="0" allianceName="" factionID="0" factionName="" />
+      </rowset>
+    </key>
+  </result>
+  <cachedUntil>2016-09-05 20:26:35</cachedUntil>
+</eveapi>
