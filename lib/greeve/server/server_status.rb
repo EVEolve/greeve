@@ -10,10 +10,6 @@ module Greeve
 
       attribute :server_open,    xpath: "eveapi/result/serverOpen/?[0]",    type: :boolean
       attribute :online_players, xpath: "eveapi/result/onlinePlayers/?[0]", type: :integer
-
-      def initialize(opts = {})
-        super(opts)
-      end
     end
   end
 end

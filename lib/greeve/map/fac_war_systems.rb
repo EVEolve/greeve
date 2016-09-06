@@ -21,10 +21,6 @@ module Greeve
         attribute :victory_points,          xpath: "@victoryPoints",         type: :integer
         attribute :victory_point_threshold, xpath: "@victoryPointThreshold", type: :integer
       end
-
-      def initialize(opts = {})
-        super(opts)
-      end
     end
   end
 end
