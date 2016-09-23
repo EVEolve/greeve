@@ -60,6 +60,13 @@ describe Greeve::Helpers::DefineAttributeMethod do
       let(:expected) { "3" }
 
       include_examples :can_define_an_attribute, :string, String
+
+      describe "strips leading and trailing whitespace" do
+        let(:value) { "\ttest\n" }
+        let(:expected) { "test" }
+
+        include_examples :can_define_an_attribute, :string, String
+      end
     end
 
     describe "datetime attribute" do
