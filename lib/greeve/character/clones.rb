@@ -6,7 +6,7 @@ module Greeve
     #
     # @see https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/character/char_clones.html
     class Clones < Greeve::BaseItem
-      endpoint "map/Clones"
+      endpoint "char/Clones"
 
       attribute :dob,                 xpath:"eveapi/result/DoB/?[0]",               type: :datetime
       attribute :race,                xpath:"eveapi/result/race/?[0]",              type: :string
