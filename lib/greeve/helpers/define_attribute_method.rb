@@ -30,7 +30,7 @@ module Greeve
               when :boolean
                 value == "1" || value.downcase == "true"
               when :string
-                value.to_s
+                value.to_s.strip
               when :datetime
                 value.empty? ? nil : Time.parse(value + " UTC")
               end
