@@ -6,7 +6,7 @@ module Greeve
     #
     # @see https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/character/char_charactersheet.html
     class CharacterSheet < Greeve::BaseItem
-      endpoint "eve/CharacterSheet"
+      endpoint "char/CharacterSheet"
 
       attribute :character_id,        xpath: "eveapi/result/characterID/?[0]",       type: :integer
       attribute :name,                xpath: "eveapi/result/name/?[0]",              type: :string

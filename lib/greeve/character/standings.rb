@@ -6,7 +6,7 @@ module Greeve
     #
     # @see https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/character/char_standings.html
     class Standings < Greeve::BaseItem
-      endpoint "eve/Standings"
+      endpoint "char/Standings"
 
       rowset :agents, xpath: "eveapi/result/characterNPCStandings/rowset[@name='agents']" do
         attribute :from_id,   xpath: "@fromID",   type: :integer

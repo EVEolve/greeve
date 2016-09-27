@@ -1,7 +1,7 @@
 describe Greeve::Character::CharacterSheet do
   let(:key) { "1515664" }
   let(:vcode) { "QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3" }
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/character/CharacterSheet.xml.aspx" }
+  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/char/CharacterSheet.xml.aspx" }
   let(:xml_filename) { "character/character_sheet" }
   let(:character_id) { 462421468 }
 
