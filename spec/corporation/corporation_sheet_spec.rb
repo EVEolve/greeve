@@ -1,13 +1,9 @@
-describe Greeve::Corporation::CorporationSheet do
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/corp/CorporationSheet.xml.aspx" }
-  let(:xml_filename) { "corporation/corporation_sheet" }
+vcr_opts = {
+  cassette_name: "corporation/corporation_sheet",
+}
+
+describe Greeve::Corporation::CorporationSheet, vcr: vcr_opts do
   let(:corporation_id) { 98063277 }
-
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
 
   let(:resource) { Greeve::Corporation::CorporationSheet.new(corporation_id) }
 
