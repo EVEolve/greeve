@@ -1,14 +1,10 @@
-describe Greeve::Corporation::Standings do
+vcr_opts = {
+  cassette_name: "corporation/standings",
+}
+
+describe Greeve::Corporation::Standings, vcr: vcr_opts do
   let(:key) { "1515664" }
   let(:vcode) { "QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3" }
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/corp/Standings.xml.aspx" }
-  let(:xml_filename) { "corporation/standings" }
-
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
 
   let(:resource) {
     Greeve::Corporation::Standings.new(key: key, vcode: vcode)

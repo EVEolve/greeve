@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/corp/Standings.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Fri, 23 Sep 2016 03:36:03 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-23 03:36:03</currentTime>
+          <result>
+            <corporationNPCStandings>
+              <rowset name="agents" key="fromID" columns="fromID,fromName,standing">
+                <row fromID="3009041" fromName="Isaine Mandie" standing="0.12" />
+                <row fromID="3009064" fromName="Bloir Abolia" standing="0.12" />
+                <row fromID="3009122" fromName="Oust Breeriest" standing="0.97" />
+              </rowset>
+              <rowset name="NPCCorporations" key="fromID" columns="fromID,fromName,standing">
+                <row fromID="1000005" fromName="Hyasyoda Corporation" standing="0.32" />
+                <row fromID="1000006" fromName="Deep Core Mining Inc." standing="-0.20" />
+                <row fromID="1000009" fromName="Caldari Provisions" standing="0.11" />
+              </rowset>
+              <rowset name="factions" key="fromID" columns="fromID,fromName,standing">
+                <row fromID="500004" fromName="Gallente Federation" standing="1.22" />
+                <row fromID="500005" fromName="Jove Empire" standing="0.18" />
+                <row fromID="500007" fromName="Ammatar Mandate" standing="-0.34" />
+              </rowset>
+            </corporationNPCStandings>
+          </result>
+          <cachedUntil>2016-09-23 06:33:03</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/corp/Standings.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Fri, 23 Sep 2016 03:36:03 GMT
+recorded_with: VCR 3.0.3
