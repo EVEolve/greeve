@@ -1,13 +1,8 @@
-describe Greeve::Map::FacWarSystems do
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/map/FacWarSystems.xml.aspx" }
-  let(:xml_filename) { "map/fac_war_systems" }
+vcr_opts = {
+  cassette_name: "map/fac_war_systems",
+}
 
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
-
+describe Greeve::Map::FacWarSystems, vcr: vcr_opts do
   let(:resource) { Greeve::Map::FacWarSystems.new }
 
   context "resource" do

@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/map/FacWarSystems.xml.aspx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sat, 03 Sep 2016 22:10:09 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-03 22:10:09</currentTime>
+          <result>
+            <rowset name="solarSystems" key="solarSystemID" columns="solarSystemID,solarSystemName,occupyingFactionID,owningFactionID,occupyingFactionName,owningFactionName,contested,victoryPoints,victoryPointThreshold">
+              <row solarSystemID="30003856" solarSystemName="Athounon" occupyingFactionID="500001" owningFactionID="500004" occupyingFactionName="Caldari State" owningFactionName="Gallente Federation" contested="True" victoryPoints="2280" victoryPointThreshold="3000" />
+              <row solarSystemID="30003855" solarSystemName="Mantenault" occupyingFactionID="500001" owningFactionID="500004" occupyingFactionName="Caldari State" owningFactionName="Gallente Federation" contested="True" victoryPoints="2260" victoryPointThreshold="3000" />
+              <row solarSystemID="30003853" solarSystemName="Mercomesier" occupyingFactionID="500001" owningFactionID="500004" occupyingFactionName="Caldari State" owningFactionName="Gallente Federation" contested="True" victoryPoints="1740" victoryPointThreshold="3000" />
+              <row solarSystemID="30003857" solarSystemName="Odamia" occupyingFactionID="0" owningFactionID="500004" occupyingFactionName="" owningFactionName="Gallente Federation" contested="True" victoryPoints="1120" victoryPointThreshold="3000" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-09-03 22:16:53</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/map/FacWarSystems.xml.aspx
+  recorded_at: Sat, 03 Sep 2016 22:10:09 GMT
+recorded_with: VCR 3.0.3
