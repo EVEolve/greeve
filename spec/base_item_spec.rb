@@ -1,21 +1,16 @@
-describe Greeve::BaseItem do
-  let(:response_file) { "eve/character_info" }
+vcr_opts = {
+  cassette_name: "eve/character_info",
+}
+
+vcr_opts_match_any = {
+  cassette_name: "eve/character_info",
+  match_requests_on: [],
+  allow_playback_repeats: true,
+}
+
+describe Greeve::BaseItem, vcr: vcr_opts do
   let(:character_id)  { 462421468 }
   let(:character_name) { "Zaphoon" }
-
-  before {
-    stub_endpoint(
-      "#{Greeve::EVE_API_BASE_URL}/eve/CharacterInfo.xml.aspx?characterID=#{character_id}",
-      response_file
-    )
-
-    stub_endpoint(
-      %r{#{Greeve::EVE_API_BASE_URL}/test/endpoint.xml.aspx},
-      response_file
-    )
-
-    invalidate_remaining_endpoints
-  }
 
   it "is an abstract class" do
     expect { Greeve::BaseItem.new(character_id) }.to raise_error(TypeError)
@@ -54,7 +49,7 @@ describe Greeve::BaseItem do
         end
       }
 
-      specify "endpoint" do
+      specify "endpoint", vcr: vcr_opts_match_any do
         subclass.class_eval do
           endpoint "/test/endpoint.xml.aspx"
         end
@@ -113,7 +108,7 @@ describe Greeve::BaseItem do
       end
     end
 
-    describe "cache_expired?" do
+    describe "cache_expired?", vcr: vcr_opts_match_any do
       before {
         # Replace `cachedUntil` with a mocked value.
         subject.instance_variable_get(:@xml_element).tap do |xml|
