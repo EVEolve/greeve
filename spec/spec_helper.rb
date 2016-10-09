@@ -3,10 +3,10 @@ require "rspec/its"
 require "vcr"
 require "coveralls"
 require "fileutils"
-require_relative "helpers"
 
 Coveralls.wear!
 
+require_relative "helpers"
 require "greeve"
 
 RSpec.configure do |c|
