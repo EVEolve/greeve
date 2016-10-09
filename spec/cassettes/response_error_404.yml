@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/test/error.xml.aspx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/html; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Mon, 10 Oct 2016 02:58:54 GMT
+      Content-Length:
+      - '3621'
+    body:
+      encoding: UTF-8
+      string: "<!DOCTYPE html>\r\n<html>\r\n    <head>\r\n        <title>The resource
+        cannot be found.</title>\r\n        <meta name=\"viewport\" content=\"width=device-width\"
+        />\r\n        <style>\r\n         body {font-family:\"Verdana\";font-weight:normal;font-size:
+        .7em;color:black;} \r\n         p {font-family:\"Verdana\";font-weight:normal;color:black;margin-top:
+        -5px}\r\n         b {font-family:\"Verdana\";font-weight:bold;color:black;margin-top:
+        -5px}\r\n         H1 { font-family:\"Verdana\";font-weight:normal;font-size:18pt;color:red
+        }\r\n         H2 { font-family:\"Verdana\";font-weight:normal;font-size:14pt;color:maroon
+        }\r\n         pre {font-family:\"Consolas\",\"Lucida Console\",Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}\r\n
+        \        .marker {font-weight: bold; color: black;text-decoration: none;}\r\n
+        \        .version {color: gray;}\r\n         .error {margin-bottom: 10px;}\r\n
+        \        .expandable { text-decoration:underline; font-weight:bold; color:navy;
+        cursor:hand; }\r\n         @media screen and (max-width: 639px) {\r\n          pre
+        { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word;
+        }\r\n         }\r\n         @media screen and (max-width: 479px) {\r\n          pre
+        { width: 280px; }\r\n         }\r\n        </style>\r\n    </head>\r\n\r\n
+        \   <body bgcolor=\"white\">\r\n\r\n            <span><H1>Server Error in
+        '/' Application.<hr width=100% size=1 color=silver></H1>\r\n\r\n            <h2>
+        <i>The resource cannot be found.</i> </h2></span>\r\n\r\n            <font
+        face=\"Arial, Helvetica, Geneva, SunSans-Regular, sans-serif \">\r\n\r\n            <b>
+        Description: </b>HTTP 404. The resource you are looking for (or one of its
+        dependencies) could have been removed, had its name changed, or is temporarily
+        unavailable. &nbsp;Please review the following URL and make sure that it is
+        spelled correctly.\r\n            <br><br>\r\n\r\n            <b> Requested
+        URL: </b>/test/error.xml.aspx<br><br>\r\n\r\n            <hr width=100% size=1
+        color=silver>\r\n\r\n            <b>Version Information:</b>&nbsp;Microsoft
+        .NET Framework Version:4.0.30319; ASP.NET Version:4.0.30319.34274\r\n\r\n
+        \           </font>\r\n\r\n    </body>\r\n</html>\r\n<!-- \r\n[HttpException]:
+        The file &#39;/test/error.xml.aspx&#39; does not exist.\r\n   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath
+        virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile,
+        Boolean throwIfNotFound, Boolean ensureIsUpToDate)\r\n   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext
+        context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp,
+        Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)\r\n
+        \  at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath
+        virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)\r\n
+        \  at System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath(VirtualPath
+        virtualPath, Type requiredBaseType, HttpContext context, Boolean allowCrossApp)\r\n
+        \  at System.Web.UI.PageHandlerFactory.GetHandlerHelper(HttpContext context,
+        String requestType, VirtualPath virtualPath, String physicalPath)\r\n   at
+        System.Web.HttpApplication.MaterializeHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()\r\n
+        \  at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&
+        completedSynchronously)\r\n--><!-- \r\nThis error page might contain sensitive
+        information because ASP.NET is configured to show verbose error messages using
+        &lt;customErrors mode=\"Off\"/&gt;. Consider using &lt;customErrors mode=\"On\"/&gt;
+        or &lt;customErrors mode=\"RemoteOnly\"/&gt; in production environments.-->"
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/test/error.xml.aspx
+  recorded_at: Mon, 10 Oct 2016 02:58:54 GMT
+recorded_with: VCR 3.0.3
