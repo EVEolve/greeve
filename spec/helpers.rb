@@ -1,4 +1,5 @@
 require "ox"
+require "yaml"
 
 # Spec helpers.
 module SpecHelpers
@@ -34,30 +35,21 @@ module SpecHelpers
     #   .and_return(Typhoeus::Response.new(code: 500))
   end
 
-  # Load an XML file as a string.
+  # Parse a cassette's response string in spec/cassettes into an XML element.
   #
-  # @param file_name [String] base name of the file (the .xml extension does not
-  #   need to be specified)
-  #
-  # @return [String] stringified XML file
-  def load_file(file_name)
-    _file_name = file_name.gsub(/\.xml$/, "")
-    File.open("spec/xml/#{_file_name}.xml").read
-  end
-
-  # Parse a file located in spec/xml into an XML element.
-  #
-  # @param file_name [String] base name of the file (the .xml extension does not
-  #   need to be specified)
+  # @param cassette [String] relative path to the cassette (the .yml extension
+  #   does not need to be specified)
   #
   # @option opts [String] :xpath (nil) optional xpath of a nested element to
   #   return. The root element is returned if this is not specified.
   #
   # @return [Ox::Element] an XML element
-  def load_xml_file(file_name, opts = {})
+  def load_xml_from_cassette(cassette, opts = {})
     xpath = opts[:xpath]
 
-    element = Ox.parse(load_file(file_name))
+    cassette_path = "spec/cassettes/#{cassette}.yml"
+    response_string = YAML.load_file(cassette_path)["http_interactions"][0]["response"]["body"]["string"]
+    element = Ox.parse(response_string)
 
     xpath ? element.locate(xpath).first : element
   end
