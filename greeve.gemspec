@@ -35,4 +35,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec", "~>3.5"
   s.add_development_dependency "rspec-its", "~> 1.2"
   s.add_development_dependency "fivemat"
+  s.add_development_dependency "vcr", "~> 3.0", ">= 3.0.3"
 end

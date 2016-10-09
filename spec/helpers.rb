@@ -1,6 +1,6 @@
 require "ox"
 
-# Spec helpers for working with XML.
+# Spec helpers.
 module SpecHelpers
   # Stub out an HTTP endpoint to return a canned response.
   #
