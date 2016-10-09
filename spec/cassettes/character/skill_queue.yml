@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/SkillQueue.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 04 Sep 2016 02:52:08 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-04 02:52:08</currentTime>
+          <result>
+            <rowset name="skillqueue" key="queuePosition" columns="queuePosition,typeID,level,startSP,endSP,startTime,endTime">
+              <row queuePosition="0" typeID="12214" level="4" startSP="40000" endSP="226275" startTime="2016-09-01 13:25:59" endTime="2016-09-04 19:02:52" />
+              <row queuePosition="1" typeID="12206" level="4" startSP="40000" endSP="226275" startTime="2016-09-04 19:02:52" endTime="2016-09-08 00:39:44" />
+              <row queuePosition="2" typeID="12211" level="4" startSP="40000" endSP="226275" startTime="2016-09-08 00:39:44" endTime="2016-09-11 06:16:37" />
+              <row queuePosition="3" typeID="12202" level="4" startSP="40000" endSP="226275" startTime="2016-09-11 06:16:37" endTime="2016-09-14 11:53:29" />
+              <row queuePosition="4" typeID="12208" level="4" startSP="40000" endSP="226275" startTime="2016-09-14 11:53:29" endTime="2016-09-17 17:30:22" />
+              <row queuePosition="5" typeID="11083" level="4" startSP="24000" endSP="135765" startTime="2016-09-17 17:30:22" endTime="2016-09-19 16:04:29" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-09-04 03:47:14</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/SkillQueue.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 04 Sep 2016 02:52:08 GMT
+recorded_with: VCR 3.0.3
