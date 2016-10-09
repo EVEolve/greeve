@@ -1,13 +1,8 @@
-describe Greeve::Map::Kills do
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/map/Kills.xml.aspx" }
-  let(:xml_filename) { "map/kills" }
+vcr_opts = {
+  cassette_name: "map/kills",
+}
 
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
-
+describe Greeve::Map::Kills, vcr: vcr_opts do
   let(:resource) { Greeve::Map::Kills.new }
 
   context "resource" do
