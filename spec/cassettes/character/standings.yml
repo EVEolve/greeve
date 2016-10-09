@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/Standings.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 04 Sep 2016 03:42:23 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-04 03:42:23</currentTime>
+          <result>
+            <characterNPCStandings>
+              <rowset name="agents" key="fromID" columns="fromID,fromName,standing">
+                <row fromID="3009823" fromName="Loot Astyroure" standing="0.75" />
+                <row fromID="3010819" fromName="Isaken Sarkeda" standing="0.27" />
+                <row fromID="3010852" fromName="Fider Tolelskorsur" standing="7.75" />
+                <row fromID="3010858" fromName="Fasskeflur Orba" standing="0.68" />
+                <row fromID="3010859" fromName="Krigasand Eytteinn" standing="1.27" />
+              </rowset>
+              <rowset name="NPCCorporations" key="fromID" columns="fromID,fromName,standing">
+                <row fromID="1000003" fromName="Prompt Delivery" standing="0.13" />
+                <row fromID="1000005" fromName="Hyasyoda Corporation" standing="0.13" />
+                <row fromID="1000006" fromName="Deep Core Mining Inc." standing="-0.20" />
+                <row fromID="1000009" fromName="Caldari Provisions" standing="0.11" />
+                <row fromID="1000010" fromName="Kaalakiota Corporation" standing="0.01" />
+              </rowset>
+              <rowset name="factions" key="fromID" columns="fromID,fromName,standing">
+                <row fromID="500001" fromName="Caldari State" standing="-3.88" />
+                <row fromID="500002" fromName="Minmatar Republic" standing="2.89" />
+                <row fromID="500003" fromName="Amarr Empire" standing="-6.02" />
+                <row fromID="500004" fromName="Gallente Federation" standing="2.97" />
+                <row fromID="500005" fromName="Jove Empire" standing="0.50" />
+              </rowset>
+            </characterNPCStandings>
+          </result>
+          <cachedUntil>2016-09-04 04:47:03</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/Standings.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 04 Sep 2016 03:42:23 GMT
+recorded_with: VCR 3.0.3
