@@ -1,14 +1,12 @@
-describe Greeve::Corporation::MemberTracking do
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/corp/MemberTracking.xml.aspx" }
-  let(:xml_filename) { "corporation/member_tracking" }
+vcr_opts = {
+  cassette_name: "corporation/member_tracking",
+}
 
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
+describe Greeve::Corporation::MemberTracking, vcr: vcr_opts do
+  let(:key) { "1515664" }
+  let(:vcode) { "QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3" }
 
-    invalidate_remaining_endpoints
-  }
-
-  let(:resource) { Greeve::Corporation::MemberTracking.new }
+  let(:resource) { Greeve::Corporation::MemberTracking.new(key: key, vcode: vcode) }
 
   context "resource" do
     subject { resource }
@@ -34,9 +32,12 @@ describe Greeve::Corporation::MemberTracking do
     its(:roles) { should eq nil }
     its(:grantable_roles) { should eq nil }
 
-    context "with extended option" do
-      let(:xml_filename) { "corporation/member_tracking_extended" }
-      let(:resource) { Greeve::Corporation::MemberTracking.new(extended: true) }
+    vcr_opts_extended = {
+      cassette_name: "corporation/member_tracking_extended",
+    }
+
+    context "with extended option", vcr: vcr_opts_extended do
+      let(:resource) { Greeve::Corporation::MemberTracking.new(extended: true, key: key, vcode: vcode) }
 
       its(:character_id) { should eq 462421468 }
       its(:name) { should eq "Zaphoon" }
