@@ -1,14 +1,10 @@
-describe Greeve::Account::AccountStatus do
+vcr_opts = {
+  cassette_name: "account/account_status",
+}
+
+describe Greeve::Account::AccountStatus, vcr: vcr_opts do
   let(:key) { "1515664" }
   let(:vcode) { "QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3" }
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/account/AccountStatus.xml.aspx" }
-  let(:xml_filename) { "account/account_status" }
-
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
 
   let(:resource) { Greeve::Account::AccountStatus.new(key: key, vcode: vcode) }
 
