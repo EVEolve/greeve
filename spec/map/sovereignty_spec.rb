@@ -1,13 +1,8 @@
-describe Greeve::Map::Sovereignty do
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/map/Sovereignty.xml.aspx" }
-  let(:xml_filename) { "map/sovereignty" }
+vcr_opts = {
+  cassette_name: "map/sovereignty",
+}
 
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
-
+describe Greeve::Map::Sovereignty, vcr: vcr_opts do
   let(:resource) { Greeve::Map::Sovereignty.new }
 
   context "resource" do

@@ -1,14 +1,12 @@
-describe Greeve::Corporation::AccountBalance do
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/corp/AccountBalance.xml.aspx" }
-  let(:xml_filename) { "corporation/account_balance" }
+vcr_opts = {
+  cassette_name: "corporation/account_balance",
+}
 
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
+describe Greeve::Corporation::AccountBalance, vcr: vcr_opts do
+  let(:key) { "1515664" }
+  let(:vcode) { "QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3" }
 
-    invalidate_remaining_endpoints
-  }
-
-  let(:resource) { Greeve::Corporation::AccountBalance.new }
+  let(:resource) { Greeve::Corporation::AccountBalance.new(key: key, vcode: vcode) }
 
   context "resource" do
     subject { resource }

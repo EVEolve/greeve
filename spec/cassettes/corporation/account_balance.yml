@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/corp/AccountBalance.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Thu, 22 Sep 2016 20:36:51 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-22 20:36:51</currentTime>
+          <result>
+            <rowset name="accounts" key="accountID" columns="accountID,accountKey,balance">
+              <row accountID="45584084" accountKey="1000" balance="7231642205.17" />
+              <row accountID="45584281" accountKey="1001" balance="369354707.30" />
+              <row accountID="45584282" accountKey="1002" balance="643412103.27" />
+              <row accountID="45584283" accountKey="1003" balance="0.00" />
+              <row accountID="45584284" accountKey="1004" balance="0.10" />
+              <row accountID="45584285" accountKey="1005" balance="0.92" />
+              <row accountID="45584286" accountKey="1006" balance="53939224.41" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-09-22 20:49:35</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/corp/AccountBalance.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Thu, 22 Sep 2016 20:36:51 GMT
+recorded_with: VCR 3.0.3

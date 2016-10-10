@@ -1,12 +1,12 @@
 require "pry"
 require "rspec/its"
+require "vcr"
 require "coveralls"
 require "fileutils"
 
-require_relative "helpers"
-
 Coveralls.wear!
 
+require_relative "helpers"
 require "greeve"
 
 RSpec.configure do |c|
@@ -27,4 +27,10 @@ RSpec.configure do |c|
   # Set output formatter and enable color.
   c.formatter = "Fivemat"
   c.color = true
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = "spec/cassettes"
+  c.hook_into :typhoeus
+  c.configure_rspec_metadata!
 end

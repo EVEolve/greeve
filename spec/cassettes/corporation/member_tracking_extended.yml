@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/corp/MemberTracking.xml.aspx?extended=1&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Thu, 15 Sep 2016 02:34:42 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-15 02:34:42</currentTime>
+          <result>
+            <rowset name="members" key="characterID" columns="characterID,name,startDateTime,baseID,base,title,logonDateTime,logoffDateTime,locationID,location,shipTypeID,shipType,roles,grantableRoles">
+              <row characterID="462421468" name="Zaphoon" startDateTime="2016-07-24 02:57:00" baseID="0" base="" title="Director" logonDateTime="2016-09-14 16:05:07" logoffDateTime="2016-09-14 16:08:38" locationID="60014485" location="Halle X - Moon 4 - X-Sense Chemical Refinery" shipTypeID="12032" shipType="Manticore" roles="9223372036854775807" grantableRoles="0" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-09-15 08:31:42</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/corp/MemberTracking.xml.aspx?extended=1&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Thu, 15 Sep 2016 02:34:42 GMT
+recorded_with: VCR 3.0.3

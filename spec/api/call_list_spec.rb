@@ -1,13 +1,8 @@
-describe Greeve::API::CallList do
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/api/CallList.xml.aspx" }
-  let(:xml_filename) { "api/call_list" }
+vcr_opts = {
+  cassette_name: "api/call_list",
+}
 
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
-
+describe Greeve::API::CallList, vcr: vcr_opts do
   let(:resource) { Greeve::API::CallList.new }
 
   context "resource" do

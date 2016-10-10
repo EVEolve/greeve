@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/CharacterSheet.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Mon, 05 Sep 2016 22:19:56 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-05 22:19:56</currentTime>
+          <result>
+            <characterID>462421468</characterID>
+            <name>Zaphoon</name>
+            <homeStationID>60012772</homeStationID>
+            <DoB>2010-01-27 03:14:00</DoB>
+            <race>Caldari</race>
+            <bloodLineID>2</bloodLineID>
+            <bloodLine>Civire</bloodLine>
+            <ancestryID>7</ancestryID>
+            <ancestry>Entrepreneurs</ancestry>
+            <gender>Male</gender>
+            <corporationName>Archon Corporation</corporationName>
+            <corporationID>98063277</corporationID>
+            <allianceName />
+            <allianceID>0</allianceID>
+            <factionName />
+            <factionID>0</factionID>
+            <cloneTypeID>164</cloneTypeID>
+            <cloneName>Clone Grade Alpha</cloneName>
+            <cloneSkillPoints>0</cloneSkillPoints>
+            <freeSkillPoints>0</freeSkillPoints>
+            <freeRespecs>3</freeRespecs>
+            <cloneJumpDate>2013-06-06 01:43:31</cloneJumpDate>
+            <lastRespecDate>2015-01-17 17:17:15</lastRespecDate>
+            <lastTimedRespec>2015-01-18 17:17:15</lastTimedRespec>
+            <remoteStationDate>0001-01-01 00:00:00</remoteStationDate>
+            <rowset name="jumpClones" key="jumpCloneID" columns="jumpCloneID,typeID,locationID,cloneName">
+              <row jumpCloneID="16126532" typeID="164" locationID="60007627" cloneName="" />
+            </rowset>
+            <rowset name="jumpCloneImplants" key="jumpCloneID" columns="jumpCloneID,typeID,typeName">
+              <row jumpCloneID="16126532" typeID="10208" typeName="Memory Augmentation - Standard" />
+              <row jumpCloneID="16126532" typeID="10212" typeName="Neural Boost - Standard" />
+            </rowset>
+            <jumpActivation>0001-01-01 00:00:00</jumpActivation>
+            <jumpFatigue>0001-01-02 00:00:00</jumpFatigue>
+            <jumpLastUpdate>0001-01-03 00:00:00</jumpLastUpdate>
+            <balance>1234567.89</balance>
+            <rowset name="implants" key="typeID" columns="typeID,typeName">
+              <row typeID="10222" typeName="Cybernetic Subprocessor - Improved" />
+              <row typeID="10209" typeName="Memory Augmentation - Improved" />
+            </rowset>
+            <attributes>
+              <intelligence>22</intelligence>
+              <memory>17</memory>
+              <charisma>18</charisma>
+              <perception>21</perception>
+              <willpower>20</willpower>
+            </attributes>
+            <rowset name="skills" key="typeID" columns="typeID,skillpoints,level,published">
+              <row typeID="3335" skillpoints="1280000" level="5" published="1" />
+              <row typeID="3336" skillpoints="362039" level="4" published="1" />
+              <row typeID="3337" skillpoints="362039" level="4" published="1" />
+            </rowset>
+            <rowset name="certificates" key="certificateID" columns="certificateID">
+              <row certificateID="12345" />
+            </rowset>
+            <rowset name="corporationRoles" key="roleID" columns="roleID,roleName">
+              <row roleID="1" roleName="roleDirector" />
+            </rowset>
+            <rowset name="corporationRolesAtHQ" key="roleID" columns="roleID,roleName">
+              <row roleID="2" roleName="roleDirector" />
+            </rowset>
+            <rowset name="corporationRolesAtBase" key="roleID" columns="roleID,roleName">
+              <row roleID="3" roleName="roleDirector" />
+            </rowset>
+            <rowset name="corporationRolesAtOther" key="roleID" columns="roleID,roleName">
+              <row roleID="4" roleName="roleDirector" />
+            </rowset>
+            <rowset name="corporationTitles" key="titleID" columns="titleID,titleName">
+              <row titleName="Digital Janitor" titleID="8" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-09-05 22:33:56</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/CharacterSheet.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Mon, 05 Sep 2016 22:19:56 GMT
+recorded_with: VCR 3.0.3

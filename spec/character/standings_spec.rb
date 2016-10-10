@@ -1,15 +1,11 @@
-describe Greeve::Character::Standings do
+vcr_opts = {
+  cassette_name: "character/standings",
+}
+
+describe Greeve::Character::Standings, vcr: vcr_opts do
   let(:key) { "1515664" }
   let(:vcode) { "QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3" }
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/char/Standings.xml.aspx" }
-  let(:xml_filename) { "character/standings" }
   let(:character_id) { 462421468 }
-
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
 
   let(:resource) {
     Greeve::Character::Standings.new(character_id, key: key, vcode: vcode)

@@ -1,15 +1,11 @@
-describe Greeve::Character::SkillQueue do
+vcr_opts = {
+  cassette_name: "character/skill_queue",
+}
+
+describe Greeve::Character::SkillQueue, vcr: vcr_opts do
   let(:key) { "1515664" }
   let(:vcode) { "QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3" }
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/char/SkillQueue.xml.aspx" }
-  let(:xml_filename) { "character/skill_queue" }
   let(:character_id) { 462421468 }
-
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
 
   let(:resource) {
     Greeve::Character::SkillQueue.new(character_id, key: key, vcode: vcode)
@@ -34,9 +30,11 @@ describe Greeve::Character::SkillQueue do
       its(:end_time) { should eq Time.parse("2016-09-04 19:02:52 UTC") }
     end
 
-    context "paused" do
-      let(:xml_filename) { "character/skill_queue_paused" }
+    vcr_opts_skill_queue_paused = {
+      cassette_name: "character/skill_queue_paused",
+    }
 
+    context "paused", vcr: vcr_opts_skill_queue_paused do
       subject { resource.skillqueue.first }
 
       its(:queue_position) { should eq 0 }

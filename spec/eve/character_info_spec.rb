@@ -1,15 +1,11 @@
-describe Greeve::Eve::CharacterInfo do
+vcr_opts = {
+  cassette_name: "eve/character_info",
+}
+
+describe Greeve::Eve::CharacterInfo, vcr: vcr_opts do
   let(:key) { "1515664" }
   let(:vcode) { "QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3" }
-  let(:base_endpoint) { "#{Greeve::EVE_API_BASE_URL}/eve/CharacterInfo.xml.aspx" }
-  let(:xml_filename) { "eve/character_info" }
   let(:character_id) { 462421468 }
-
-  before {
-    stub_endpoint(base_endpoint, xml_filename)
-
-    invalidate_remaining_endpoints
-  }
 
   shared_examples :public_info do
     its(:character_id) { should eq character_id }
@@ -48,9 +44,11 @@ describe Greeve::Eve::CharacterInfo do
     include_examples :public_info
   end
 
-  context "private info (with api key)" do
-    let(:xml_filename) { "eve/character_info_with_key" }
+  vcr_opts_with_key = {
+    cassette_name: "eve/character_info_with_key",
+  }
 
+  context "private info (with api key)", vcr: vcr_opts_with_key do
     subject { Greeve::Eve::CharacterInfo.new(character_id, key: key, vcode: vcode) }
 
     include_examples :public_info

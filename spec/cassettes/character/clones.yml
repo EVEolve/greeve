@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/Clones.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 04 Sep 2016 18:19:02 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-04 18:19:02</currentTime>
+          <result>
+            <DoB>2010-01-27 03:14:00</DoB>
+            <race>Caldari</race>
+            <bloodLineID>2</bloodLineID>
+            <bloodLine>Civire</bloodLine>
+            <ancestryID>7</ancestryID>
+            <ancestry>Entrepreneurs</ancestry>
+            <gender>Male</gender>
+            <freeRespecs>3</freeRespecs>
+            <cloneJumpDate>2013-06-06 01:43:31</cloneJumpDate>
+            <lastRespecDate>2015-01-17 17:17:15</lastRespecDate>
+            <lastTimedRespec>2015-01-17 17:17:15</lastTimedRespec>
+            <remoteStationDate>0001-01-01 00:00:00</remoteStationDate>
+            <attributes>
+              <intelligence>22</intelligence>
+              <memory>17</memory>
+              <charisma>16</charisma>
+              <perception>21</perception>
+              <willpower>20</willpower>
+            </attributes>
+            <rowset name="implants" key="typeID" columns="typeID,typeName">
+              <row typeID="10222" typeName="Cybernetic Subprocessor - Improved" />
+              <row typeID="10209" typeName="Memory Augmentation - Improved" />
+            </rowset>
+            <rowset name="jumpClones" key="jumpCloneID" columns="jumpCloneID,typeID,locationID,cloneName">
+              <row jumpCloneID="16126532" typeID="164" locationID="60007627" cloneName="Test Clone" />
+            </rowset>
+            <rowset name="jumpCloneImplants" key="jumpCloneID" columns="jumpCloneID,typeID,typeName">
+              <row jumpCloneID="16126532" typeID="10208" typeName="Memory Augmentation - Standard" />
+              <row jumpCloneID="16126532" typeID="10212" typeName="Neural Boost - Standard" />
+            </rowset>
+            <jumpActivation>0001-01-01 00:00:00</jumpActivation>
+            <jumpFatigue>0001-01-02 00:00:00</jumpFatigue>
+            <jumpLastUpdate>0001-01-03 00:00:00</jumpLastUpdate>
+          </result>
+          <cachedUntil>2016-09-04 19:16:02</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/Clones.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 04 Sep 2016 18:19:02 GMT
+recorded_with: VCR 3.0.3

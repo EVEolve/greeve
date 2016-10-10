@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/corp/WalletTransactions.xml.aspx?fromID=4389147674&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sat, 24 Sep 2016 03:43:34 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-24 03:43:34</currentTime>
+          <result>
+            <rowset name="transactions" key="transactionID" columns="transactionDateTime,transactionID,quantity,typeName,typeID,price,clientID,clientName,characterID,characterName,stationID,stationName,transactionType,transactionFor,journalTransactionID,clientTypeID">
+              <row transactionDateTime="2016-08-24 04:07:37" transactionID="4389147672" quantity="2" typeName="Mining Laser Upgrade I" typeID="22542" price="36228.80" clientID="96209930" clientName="Chris Huntington" characterID="462421468" characterName="Zaphoon" stationID="60011866" stationName="Dodixie IX - Moon 20 - Federation Navy Assembly Plant" transactionType="buy" transactionFor="corporation" journalTransactionID="12984444965" clientTypeID="1377" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-09-24 04:10:34</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/corp/WalletTransactions.xml.aspx?fromID=4389147674&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sat, 24 Sep 2016 03:43:34 GMT
+recorded_with: VCR 3.0.3

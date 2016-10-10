@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/SkillInTraining.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 04 Sep 2016 03:02:36 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-09-04 03:02:36</currentTime>
+          <result>
+            <currentTQTime offset="0">2016-09-04 03:02:36</currentTQTime>
+            <trainingEndTime>2016-09-04 19:02:52</trainingEndTime>
+            <trainingStartTime>2016-09-01 13:25:59</trainingStartTime>
+            <trainingTypeID>12214</trainingTypeID>
+            <trainingStartSP>40000</trainingStartSP>
+            <trainingDestinationSP>226275</trainingDestinationSP>
+            <trainingToLevel>4</trainingToLevel>
+            <skillInTraining>1</skillInTraining>
+          </result>
+          <cachedUntil>2016-09-04 03:47:14</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/SkillInTraining.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 04 Sep 2016 03:02:36 GMT
+recorded_with: VCR 3.0.3
