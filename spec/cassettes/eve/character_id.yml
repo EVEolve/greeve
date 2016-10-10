@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/eve/CharacterID.xml.aspx?names=Remy%20Hart
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Mon, 10 Oct 2016 02:24:15 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-10-10 01:48:25</currentTime>
+          <result>
+            <rowset name="characters" key="characterID" columns="name,characterID">
+              <row name="Remy Hart" characterID="92902265" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-10 01:48:25</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/eve/CharacterID.xml.aspx?names=Remy%20Hart
+  recorded_at: Mon, 10 Oct 2016 02:24:16 GMT
+recorded_with: VCR 3.0.3
