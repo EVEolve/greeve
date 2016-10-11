@@ -3,6 +3,7 @@ require "ox"
 require "typhoeus"
 
 require_relative "greeve/version"
+require_relative "greeve/config"
 
 require_relative "greeve/helpers/add_attribute"
 require_relative "greeve/helpers/define_attribute_method"
