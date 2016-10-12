@@ -130,3 +130,13 @@ c = Greeve::Eve::CharacterInfo.new(462421468, key: 1234567, vcode: "abcdefg")
 p c.character_name # => "Zaphoon"
 p c.ship_type_name # => "Manticore"
 ```
+
+### Custom User-Agent
+
+CCP recommends that applications that consume from the API [pass a custom
+user-agent](https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/intro.html#user-agent).
+Greeve allows you to easily do this.
+
+```ruby
+Greeve::Config.user_agent = "My App/1.0.0 - http://www.my-app.com"
+```
