@@ -1,6 +1,7 @@
 require "bigdecimal"
 require "time"
 
+require_relative "response_error"
 require_relative "helpers/add_attribute"
 require_relative "helpers/define_attribute_method"
 require_relative "rowset"
@@ -197,9 +198,10 @@ module Greeve
       url = "#{Greeve::EVE_API_BASE_URL}/#{endpoint}.xml.aspx"
       response = Typhoeus.get(url, params: @query_params)
 
-      # TODO: Use a better error class.
-      raise TypeError, "HTTP error #{response.code}" \
-        unless (200..299).include?(response.code.to_i)
+      raise ResponseError.new(
+        code: response.code,
+        status_message: response.status_message,
+      ) unless response.success?
 
       @xml_element = Ox.parse(response.body)
 

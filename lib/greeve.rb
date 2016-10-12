@@ -7,6 +7,7 @@ require_relative "greeve/version"
 require_relative "greeve/helpers/add_attribute"
 require_relative "greeve/helpers/define_attribute_method"
 
+require_relative "greeve/response_error"
 require_relative "greeve/base_item"
 require_relative "greeve/row"
 require_relative "greeve/rowset"

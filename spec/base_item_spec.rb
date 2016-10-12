@@ -8,6 +8,12 @@ vcr_opts_match_any = {
   allow_playback_repeats: true,
 }
 
+vcr_opts_response_error = {
+  cassette_name: "response_error_404",
+  match_requests_on: [],
+  allow_playback_repeats: true,
+}
+
 describe Greeve::BaseItem, vcr: vcr_opts do
   let(:character_id)  { 462421468 }
   let(:character_name) { "Zaphoon" }
@@ -37,6 +43,24 @@ describe Greeve::BaseItem, vcr: vcr_opts do
 
     let(:api_item) { subclass.new(character_id) }
     subject { api_item }
+
+    describe "ResponseError", vcr: vcr_opts_response_error do
+      subject {
+        begin
+          api_item
+        rescue Greeve::ResponseError => ex
+          ex
+        end
+      }
+
+      it "is raised" do
+        expect { api_item }.to raise_error(Greeve::ResponseError)
+      end
+
+      its(:code) { should eq 404 }
+      its(:status_message) { should eq "Not Found" }
+      its(:message) { should eq "404 Not Found" }
+    end
 
     describe "DSL" do
       let(:subclass) {
