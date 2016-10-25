@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/eve/AllianceList.xml.aspx?version=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Test Application
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Tue, 18 Oct 2016 04:44:41 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="1">
+          <currentTime>2016-10-15 20:31:23</currentTime>
+          <result>
+            <rowset name="alliances" key="allianceID" columns="name,shortName,allianceID,executorCorpID,memberCount,startDate">
+              <row name="Goonswarm Federation" shortName="CONDI" allianceID="1354830081" executorCorpID="1344654522" memberCount="17585" startDate="2010-06-01 05:36:00" />
+              <row name="Pandemic Horde" shortName="REKTD" allianceID="99005338" executorCorpID="98388312" memberCount="10730" startDate="2015-04-02 16:29:43" />
+              <row name="Test Alliance Please Ignore" shortName="TEST" allianceID="498125261" executorCorpID="416584095" memberCount="7664" startDate="2010-05-12 21:05:00" />
+            </rowset>
+          </result>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/eve/AllianceList.xml.aspx?version=1
+  recorded_at: Tue, 18 Oct 2016 04:44:48 GMT
+recorded_with: VCR 3.0.3
