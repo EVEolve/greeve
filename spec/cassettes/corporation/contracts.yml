@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/corp/Contracts.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sat, 29 Oct 2016 20:57:25 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-10-29 20:57:25</currentTime>
+          <result>
+            <rowset name="contractList" key="contractID" columns="contractID,issuerID,issuerCorpID,assigneeID,acceptorID,startStationID,endStationID,type,status,title,forCorp,availability,dateIssued,dateExpired,dateAccepted,numDays,dateCompleted,price,reward,collateral,buyout,volume">
+              <row contractID="110086071" issuerID="462421468" issuerCorpID="98063277" assigneeID="98063277" acceptorID="0" startStationID="60003652" endStationID="60003652" type="ItemExchange" status="Outstanding" title="Test Contract" forCorp="1" availability="Private" dateIssued="2016-10-29 20:21:23" dateExpired="2016-11-12 20:21:23" dateAccepted="" numDays="0" dateCompleted="" price="4000000.00" reward="0.00" collateral="0.00" buyout="0.00" volume="29500" />
+              <row contractID="110087148" issuerID="462421468" issuerCorpID="98063277" assigneeID="98063277" acceptorID="0" startStationID="60003652" endStationID="60003652" type="ItemExchange" status="Outstanding" title="Test Incursus" forCorp="1" availability="Private" dateIssued="2016-10-29 20:56:19" dateExpired="2016-11-12 20:56:19" dateAccepted="" numDays="0" dateCompleted="" price="3510000.00" reward="0.00" collateral="0.00" buyout="0.00" volume="29500" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-10-29 21:11:25</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/corp/Contracts.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sat, 29 Oct 2016 20:57:25 GMT
+recorded_with: VCR 3.0.3
