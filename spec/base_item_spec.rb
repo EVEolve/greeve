@@ -73,12 +73,22 @@ describe Greeve::BaseItem, vcr: vcr_opts do
         end
       }
 
-      specify "endpoint", vcr: vcr_opts_match_any do
-        subclass.class_eval do
-          endpoint "/test/endpoint.xml.aspx"
+      describe "endpoint", vcr: vcr_opts_match_any do
+        specify do
+          subclass.class_eval do
+            endpoint "test/endpoint"
+          end
+
+          subject.__send__(:endpoint).should eq "test/endpoint"
         end
 
-        subject.__send__(:endpoint).should eq "test/endpoint"
+        specify "shouldn't start with a slash" do
+          expect {
+            subclass.class_eval do
+              endpoint "/test/endpoint"
+            end
+          }.to raise_error ArgumentError
+        end
       end
 
       specify "attribute" do

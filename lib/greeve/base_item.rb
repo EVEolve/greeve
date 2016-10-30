@@ -80,14 +80,16 @@ module Greeve
 
     # A DSL method to specify the API endpoint.
     #
-    # @param path [String] path of the API endpoint. Doesn't need to include the
+    # @param path [String] path of the API endpoint. It shouldn't include the
     #   leading slash `/`, or the extension `.xml.aspx`
     #
     # @example
     #   endpoint "eve/CharacterInfo"
     def self.endpoint(path)
-      # Remove leading slash and file extension.
-      @endpoint = path.gsub(/\A\/*(.*?)(?:\.xml)?(?:\.aspx)?\z/, '\1')
+      raise ArgumentError, "Endpoint shouldn't start with a slash" \
+        if path.start_with?("/")
+
+      @endpoint = path
     end
 
     # @abstract Subclass and use the DSL methods to map API endpoints to objects
