@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/corp/IndustryJobs.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 30 Oct 2016 05:19:32 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-10-30 05:08:06</currentTime>
+          <result>
+            <rowset name="jobs" key="jobID" columns="jobID,installerID,installerName,facilityID,solarSystemID,solarSystemName,stationID,activityID,blueprintID,blueprintTypeID,blueprintTypeName,blueprintLocationID,outputLocationID,runs,cost,teamID,licensedRuns,probability,productTypeID,productTypeName,status,timeInSeconds,startDate,endDate,pauseDate,completedDate,completedCharacterID,successfulRuns">
+              <row jobID="229136101" installerID="498338451" installerName="Qoi" facilityID="60006382" solarSystemID="30005194" solarSystemName="Cleyd" stationID="60006382" activityID="1" blueprintID="1015116533326" blueprintTypeID="2047" blueprintTypeName="Damage Control I Blueprint" blueprintLocationID="60006382" outputLocationID="60006382" runs="1" cost="118.00" teamID="0" licensedRuns="200" probability="0" productTypeID="0" productTypeName="" status="1" timeInSeconds="548" startDate="2014-07-19 15:47:06" endDate="2014-07-19 15:56:14" pauseDate="0001-01-01 00:00:00" completedDate="0001-01-01 00:00:00" completedCharacterID="0" successfulRuns="1" />
+              <row jobID="229135883" installerID="498338451" installerName="Qoi" facilityID="60006382" solarSystemID="30005194" solarSystemName="Cleyd" stationID="60006382" activityID="3" blueprintID="1015321999447" blueprintTypeID="25862" blueprintTypeName="Salvager I Blueprint" blueprintLocationID="60006382" outputLocationID="60006382" runs="1" cost="29.00" teamID="0" licensedRuns="60" probability="0" productTypeID="0" productTypeName="" status="1" timeInSeconds="702" startDate="2014-07-19 13:40:59" endDate="2014-07-19 13:52:41" pauseDate="0001-01-01 00:00:00" completedDate="0001-01-01 00:00:00" completedCharacterID="0" successfulRuns="2" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-10-30 05:22:06</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/corp/IndustryJobs.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 30 Oct 2016 05:19:32 GMT
+recorded_with: VCR 3.0.3
