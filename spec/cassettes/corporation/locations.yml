@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/corp/Locations.xml.aspx?IDs=1020171077193&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 30 Oct 2016 04:43:31 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-10-30 04:43:31</currentTime>
+          <result>
+            <rowset name="locations" key="itemID" columns="itemID,itemName,x,y,z">
+              <row itemID="1020171077193" itemName="Gallente Control Tower" x="-67142925360" y="-8145422240" z="-1403156520"/>
+            </rowset>
+          </result>
+          <cachedUntil>2016-10-30 05:43:31</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/corp/Locations.xml.aspx?IDs=1020171077193&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 30 Oct 2016 04:43:31 GMT
+recorded_with: VCR 3.0.3
