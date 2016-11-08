@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/corp/MarketOrders.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sat, 29 Oct 2016 02:31:22 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-10-30 02:31:22</currentTime>
+          <result>
+            <rowset name="orders" key="orderID" columns="orderID,charID,stationID,volEntered,volRemaining,minVolume,orderState,typeID,range,accountKey,duration,escrow,price,bid,issued">
+              <row orderID="4664702626" charID="462421468" stationID="60003652" volEntered="100" volRemaining="100" minVolume="1" orderState="0" typeID="222" range="0" accountKey="1000" duration="90" escrow="26.58" price="1.12" bid="1" issued="2016-10-29 20:23:04" />
+              <row orderID="4664745441" charID="462421468" stationID="60003652" volEntered="1000" volRemaining="1000" minVolume="1" orderState="0" typeID="209" range="0" accountKey="1000" duration="90" escrow="500.71" price="2.11" bid="1" issued="2016-10-29 21:21:05" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-10-30 03:28:22</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/corp/MarketOrders.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sat, 29 Oct 2016 02:31:22 GMT
+recorded_with: VCR 3.0.3
