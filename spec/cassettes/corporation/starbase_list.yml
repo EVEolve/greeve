@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/corp/StarbaseList.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 30 Oct 2016 03:32:12 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-10-30 03:32:12</currentTime>
+          <result>
+            <rowset name="starbases" key="itemID" columns="itemID,typeID,locationID,moonID,state,stateTimestamp,onlineTimestamp,standingOwnerID">
+              <row itemID="100449451" typeID="27538" locationID="30000163" moonID="40010395" state="4" stateTimestamp="2011-12-08 20:03:41" onlineTimestamp="2009-06-04 07:00:51" standingOwnerID="673381830"/>
+              <row itemID="638317993" typeID="27538" locationID="30000163" moonID="40010366" state="4" stateTimestamp="2011-12-08 19:33:36" onlineTimestamp="2008-09-17 03:52:55" standingOwnerID="673381830"/>
+            </rowset>
+          </result>
+          <cachedUntil>2016-10-30 09:29:12</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/corp/StarbaseList.xml.aspx?keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 30 Oct 2016 03:32:12 GMT
+recorded_with: VCR 3.0.3
