@@ -30,11 +30,15 @@ describe Greeve::Character::Clones, vcr: vcr_opts do
     its(:jump_fatigue) { should eq Time.parse("0001-01-02 00:00:00 UTC") }
     its(:jump_last_update) { should eq Time.parse("0001-01-03 00:00:00 UTC") }
 
-    its(:intelligence) { should eq 22 }
-    its(:memory) { should eq 17 }
-    its(:charisma) { should eq 16 }
-    its(:perception) { should eq 21 }
-    its(:willpower) { should eq 20 }
+    context "attributes" do
+      subject { resource.attributes }
+
+      its(:intelligence) { should eq 22 }
+      its(:memory) { should eq 17 }
+      its(:charisma) { should eq 16 }
+      its(:perception) { should eq 21 }
+      its(:willpower) { should eq 20 }
+    end
 
     its(:implants) { should be_a Greeve::Rowset }
     its(:jump_clones) { should be_a Greeve::Rowset }
