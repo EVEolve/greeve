@@ -25,12 +25,16 @@ describe Greeve::Corporation::CorporationSheet, vcr: vcr_opts do
     its(:member_count) { should eq 8 }
     its(:shares) { should eq 1000 }
 
-    its(:logo_graphic_id) { should eq 0 }
-    its(:logo_shape1) { should eq 539 }
-    its(:logo_shape2) { should eq 511 }
-    its(:logo_shape3) { should eq 502 }
-    its(:logo_color1) { should eq 677 }
-    its(:logo_color2) { should eq 682 }
-    its(:logo_color3) { should eq 683 }
+    context "logo" do
+      subject { resource.logo }
+
+      its(:graphic_id) { should eq 0 }
+      its(:shape1) { should eq 539 }
+      its(:shape2) { should eq 511 }
+      its(:shape3) { should eq 502 }
+      its(:color1) { should eq 677 }
+      its(:color2) { should eq 682 }
+      its(:color3) { should eq 683 }
+    end
   end
 end
