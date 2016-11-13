@@ -19,6 +19,7 @@ module Greeve
           return ivar unless ivar.nil?
 
           value = @xml_element.locate(opts[:xpath]).first
+          value = value.value if value.is_a?(Ox::CData)
 
           unless value.nil?
             value =
