@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/UpcomingCalendarEvents.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 13 Nov 2016 19:34:11 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-13 19:34:11</currentTime>
+          <result>
+            <rowset name="upcomingEvents" key="eventID" columns="eventID,ownerID,ownerName,eventDate,eventTitle,duration,importance,response,eventText,ownerTypeID">
+              <row eventID="1451448" ownerID="1" ownerName="EVE System" eventDate="2016-11-15 11:00:00" eventTitle="Deplyoment of EVE Online: Ascension" duration="0" importance="0" response="Undecided" eventText="&quot;EVE Online: Ascension&quot; will be deployed during an extended downtime starting at 11:00 UTC.&#xD;&#xA;&#xD;&#xA;&lt;a href=&quot;https://community.eveonline.com/news/news-channels/eve-online-news/eve-online-ascension-to-be-deployed-on-tuesday-november-15th/?utm_source=ingame&amp;utm_medium=calendar&amp;utm_campaign=&quot;&gt;Deployment details&lt;/a&gt;&#xD;&#xA;&#xD;&#xA;&lt;a href=&quot;https://community.eveonline.com/news/patch-notes/patch-notes-for-eve-online-ascension/?utm_source=ingame&amp;utm_medium=calendar&amp;utm_campaign=&quot;&gt;Patch notes&lt;/a&gt;" ownerTypeID="0" />
+              <row eventID="1450975" ownerID="1" ownerName="EVE System" eventDate="2016-11-27 20:00:00" eventTitle="o7: The EVE Online Show" duration="0" importance="0" response="Undecided" eventText="&quot;o7: The EVE Online Show&quot; features latest developer news, fast paced action, community overviews and a lot more with CCP Guard and CCP Mimic. &#xD;&#xA;&#xD;&#xA;Don't miss the show at 20:00 EVE time (=UTC) on &lt;a href=&quot;http://www.twitch.tv/ccp&quot;&gt;EVE TV&lt;/a&gt; on Nov 27!&#xD;&#xA;&#xD;&#xA;Check out the &lt;a href=&quot;https://community.eveonline.com/news/news-channels/eve-online-news/the-next-o7-show-airs-november-27-send-us-stuff/?utm_source=ingame&amp;utm_medium=calendar&amp;utm_campaign=&quot;&gt;detailed information&lt;/a&gt;." ownerTypeID="0" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-13 20:31:11</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/UpcomingCalendarEvents.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 13 Nov 2016 19:34:11 GMT
+recorded_with: VCR 3.0.3
