@@ -109,7 +109,7 @@ describe Greeve::BaseItem, vcr: vcr_opts do
         its(:character_name) { should eq character_name }
 
         it "is registered" do
-          subject.send(:attributes).keys.should include :character_name
+          subject.send(:_attributes).keys.should include :character_name
         end
       end
 
@@ -145,8 +145,8 @@ describe Greeve::BaseItem, vcr: vcr_opts do
         subject { namespace }
 
         it "is registered as an attribute" do
-          api_item.send(:attributes).keys.should include :general_settings
-          api_item.send(:attributes).keys.should include :combat_settings
+          api_item.send(:_attributes).keys.should include :general_settings
+          api_item.send(:_attributes).keys.should include :combat_settings
         end
 
         specify(:to_h) do
@@ -205,7 +205,7 @@ describe Greeve::BaseItem, vcr: vcr_opts do
         }
 
         specify "is registered as an attribute" do
-          api_item.send(:attributes).keys.should include :employment_history
+          api_item.send(:_attributes).keys.should include :employment_history
         end
 
         it { should be_a Greeve::Rowset }

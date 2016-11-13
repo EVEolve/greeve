@@ -190,7 +190,7 @@ module Greeve
     private
 
     # @return [Hash] the hash of attributes for this object
-    def attributes
+    def _attributes
       self.class.instance_variable_get(:@attributes) || {}
     end
 
@@ -211,7 +211,7 @@ module Greeve
 
       @xml_element = Ox.parse(response.body)
 
-      attributes.keys.each do |name|
+      _attributes.keys.each do |name|
         instance_variable_set(:"@#{name}", nil)
       end
 

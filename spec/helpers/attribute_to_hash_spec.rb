@@ -9,7 +9,7 @@ describe Greeve::Helpers::AttributeToHash do
 
       private
 
-      def attributes
+      def _attributes
         {
           foo: {},
           bar: {},

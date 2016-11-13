@@ -49,7 +49,7 @@ module Greeve
     private
 
     # @return [Hash] the hash of attributes for this object
-    def attributes
+    def _attributes
       @attributes || {}
     end
 
