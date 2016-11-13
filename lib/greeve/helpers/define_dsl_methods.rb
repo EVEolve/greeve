@@ -26,6 +26,8 @@ module Greeve
               case opts[:type]
               when :integer
                 value.to_i
+              when :integer_array
+                value.split(",").map(&:to_i)
               when :numeric
                 BigDecimal.new(value)
               when :boolean
