@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/CalendarEventAttendees.xml.aspx?characterID=462421468&eventIDs=1451448%2C1450975&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 13 Nov 2016 20:11:49 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-13 20:30:55</currentTime>
+          <result>
+            <rowset name="eventAttendees" key="eventID, characterID" columns="eventID,characterID,characterName,response">
+              <row eventID="1450975" characterID="1" characterName="EVE System" response="Accepted" />
+              <row eventID="1451448" characterID="1" characterName="EVE System" response="Accepted" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-13 20:31:09</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/CalendarEventAttendees.xml.aspx?characterID=462421468&eventIDs=1451448%2C1450975&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 13 Nov 2016 20:11:49 GMT
+recorded_with: VCR 3.0.3
