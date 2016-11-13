@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/PlanetaryPins.xml.aspx?characterID=462421468&planetID=40191481&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sat, 12 Nov 2016 06:06:19 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-13 06:06:19</currentTime>
+          <result>
+            <rowset name="pins" key="pinID" columns="pinID,typeID,typeName,schematicID,lastLaunchTime,cycleTime,quantityPerCycle,installTime,expiryTime,contentTypeID,contentTypeName,contentQuantity,longitude,latitude">
+              <row pinID="1021935301380" typeID="3060" typeName="Gas Extractor Control Unit" schematicID="0" lastLaunchTime="2016-11-13 04:51:49" cycleTime="15" quantityPerCycle="1259" installTime="2016-11-13 04:51:49" expiryTime="2016-11-14 04:51:49" contentTypeID="0" contentTypeName="" contentQuantity="0" longitude="-0.426990235704" latitude="0.512429971137" />
+              <row pinID="1021935301398" typeID="2492" typeName="Gas Basic Industry Facility" schematicID="121" lastLaunchTime="2016-11-13 01:41:58" cycleTime="0" quantityPerCycle="0" installTime="0001-01-01 00:00:00" expiryTime="0001-01-01 00:00:00" contentTypeID="0" contentTypeName="" contentQuantity="0" longitude="-0.82060128763" latitude="0.785667178916" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-13 07:06:19</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/PlanetaryPins.xml.aspx?characterID=462421468&planetID=40191481&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sat, 12 Nov 2016 06:06:19 GMT
+recorded_with: VCR 3.0.3
