@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/PlanetaryColonies.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sat, 12 Nov 2016 05:36:21 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-13 05:36:21</currentTime>
+          <result>
+            <rowset name="colonies" key="planetID" columns="solarSystemID,solarSystemName,planetID,planetName,planetTypeID,planetTypeName,ownerID,ownerName,lastUpdate,upgradeLevel,numberOfPins">
+              <row solarSystemID="30003016" solarSystemName="Junsoraert" planetID="40191481" planetName="Junsoraert IX" planetTypeID="13" planetTypeName="Planet (Gas)" ownerID="462421468" ownerName="Zaphoon" lastUpdate="2016-11-13 04:51:49" upgradeLevel="4" numberOfPins="12" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-13 06:36:21</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/PlanetaryColonies.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sat, 12 Nov 2016 05:36:21 GMT
+recorded_with: VCR 3.0.3
