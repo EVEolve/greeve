@@ -3,7 +3,9 @@ require "time"
 
 require_relative "response_error"
 require_relative "helpers/add_attribute"
-require_relative "helpers/define_attribute_method"
+require_relative "helpers/attribute_to_hash"
+require_relative "helpers/define_dsl_methods"
+require_relative "namespace"
 require_relative "rowset"
 
 module Greeve
@@ -12,7 +14,8 @@ module Greeve
   # the specific EVE API resources.
   class BaseItem
     extend Greeve::Helpers::AddAttribute
-    extend Greeve::Helpers::DefineAttributeMethod
+    extend Greeve::Helpers::DefineDSLMethods
+    include Greeve::Helpers::AttributeToHash
 
     # A DSL method to map an XML attribute to a Ruby object.
     #
@@ -32,6 +35,26 @@ module Greeve
       define_attribute_method(:class, name, opts)
     end
 
+    # A DSL method to nest a set of attributes within a namespace.
+    #
+    # @param name [Symbol] the Ruby name for this namespace
+    #
+    # @option opts [Symbol] :xpath the xpath string used to locate the namespace
+    #   in the XML element
+    #
+    # @example
+    #   namespace :general_settings, xpath: "eveapi/result/generalSettings" do
+    #     attribute :usage_flags, xpath: "usageFlags/?[0]", type: :integer
+    #   end
+    def self.namespace(name, opts = {}, &block)
+      @attributes ||= {}
+
+      opts[:type] = :namespace
+
+      add_attribute(name, opts)
+      define_namespace_method(:class, name, opts, &block)
+    end
+
     # A DSL method to map an XML rowset to a Ruby object.
     #
     # @param name [Symbol] the Ruby name for this attribute
@@ -47,16 +70,11 @@ module Greeve
     #     attribute :start_date,       xpath: "@startDate",       type: :datetime
     #   end
     def self.rowset(name, opts = {}, &block)
-      name = name.to_sym
       @attributes ||= {}
 
-      raise "Attribute `#{name}` defined more than once" if @attributes[name]
-      raise "`:xpath` not specified for `#{name}`" unless opts[:xpath]
+      opts[:type] = :rowset
 
-      @attributes[name] = {
-        xpath: opts[:xpath],
-        type: :rowset,
-      }
+      add_attribute(name, opts)
 
       define_method(name) do
         ivar = instance_variable_get(:"@#{name}")
@@ -169,24 +187,10 @@ module Greeve
         .join("\n")
     end
 
-    # @return [Hash] a hash of non-nil attributes
-    def to_h
-      attributes
-        .keys
-        .map { |name|
-          value = __send__(name)
-          value = value.to_a if value.is_a?(Rowset)
-
-          [name, value]
-        }
-        .to_h
-        .reject { |k, v| v.nil? }
-    end
-
     private
 
     # @return [Hash] the hash of attributes for this object
-    def attributes
+    def _attributes
       self.class.instance_variable_get(:@attributes) || {}
     end
 
@@ -207,7 +211,7 @@ module Greeve
 
       @xml_element = Ox.parse(response.body)
 
-      attributes.keys.each do |name|
+      _attributes.keys.each do |name|
         instance_variable_set(:"@#{name}", nil)
       end
 

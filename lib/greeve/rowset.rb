@@ -41,13 +41,12 @@ module Greeve
       "#<#{self.class.name}:#{object_id} name: #{@name}>"
     end
 
+    private
+
     # Map an XML attribute to a Ruby object.
     #
-    # @!visibility private
     # @see Greeve::Attributable#add_attribute
     alias_method :attribute, :add_attribute
-
-    private
 
     # @return [Array<Row>] an array of rows in the rowset
     def rows

@@ -6,10 +6,12 @@ require_relative "greeve/version"
 require_relative "greeve/config"
 
 require_relative "greeve/helpers/add_attribute"
-require_relative "greeve/helpers/define_attribute_method"
+require_relative "greeve/helpers/attribute_to_hash"
+require_relative "greeve/helpers/define_dsl_methods"
 
 require_relative "greeve/response_error"
 require_relative "greeve/base_item"
+require_relative "greeve/namespace"
 require_relative "greeve/row"
 require_relative "greeve/rowset"
 require_relative "greeve/account/account_status"

@@ -1,8 +1,8 @@
 module Greeve
   module Helpers
-    # Adds a helper method to define a class or instance method for a given
-    # attribute.
-    module DefineAttributeMethod
+    # Adds helper methods to define a class or instance method for a given
+    # DSL method.
+    module DefineDSLMethods
       private
 
       # Define a class or instance method for a given attribute.
@@ -37,6 +37,27 @@ module Greeve
           end
 
           instance_variable_set(:"@#{name}", value)
+        end
+      end
+
+      # Define a class or instance method for a given namespace.
+      #
+      # @param scope [:class, :instance] define the namespace as a class or
+      #   instance method
+      # @param name [String] name of the namespace method
+      # @param opts [Hash] option hash passed from the namespace DSL helper method
+      def define_namespace_method(scope, name, opts = {}, &block)
+        method = scope == :instance ? :define_singleton_method : :define_method
+
+        send(method, name) do
+          ivar = instance_variable_get(:"@#{name}")
+          return ivar unless ivar.nil?
+
+          namespace_element = @xml_element.locate(opts[:xpath]).first
+
+          namespace = Namespace.new(name.to_sym, namespace_element, &block)
+
+          instance_variable_set(:"@#{name}", namespace)
         end
       end
     end

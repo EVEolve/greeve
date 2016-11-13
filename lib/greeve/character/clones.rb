@@ -24,12 +24,13 @@ module Greeve
       attribute :jump_fatigue,        xpath:"eveapi/result/jumpFatigue/?[0]",       type: :datetime
       attribute :jump_last_update,    xpath:"eveapi/result/jumpLastUpdate/?[0]",    type: :datetime
 
-      # Character attributes
-      attribute :intelligence, xpath:"eveapi/result/attributes/intelligence/?[0]", type: :integer
-      attribute :memory,       xpath:"eveapi/result/attributes/memory/?[0]",       type: :integer
-      attribute :charisma,     xpath:"eveapi/result/attributes/charisma/?[0]",     type: :integer
-      attribute :perception,   xpath:"eveapi/result/attributes/perception/?[0]",   type: :integer
-      attribute :willpower,    xpath:"eveapi/result/attributes/willpower/?[0]",    type: :integer
+      namespace :attributes, xpath: "eveapi/result/attributes" do
+        attribute :intelligence, xpath:"intelligence/?[0]", type: :integer
+        attribute :memory,       xpath:"memory/?[0]",       type: :integer
+        attribute :charisma,     xpath:"charisma/?[0]",     type: :integer
+        attribute :perception,   xpath:"perception/?[0]",   type: :integer
+        attribute :willpower,    xpath:"willpower/?[0]",    type: :integer
+      end
 
       rowset :implants, xpath: "eveapi/result/rowset[@name='implants']" do
         attribute :type_id,   xpath: "@typeID",   type: :integer

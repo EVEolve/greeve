@@ -23,13 +23,15 @@ module Greeve
       attribute :member_count,     xpath: "eveapi/result/memberCount/?[0]",     type: :integer
       attribute :shares,           xpath: "eveapi/result/shares/?[0]",          type: :integer
 
-      attribute :logo_graphic_id, xpath: "eveapi/result/logo/graphicID/?[0]", type: :integer
-      attribute :logo_shape1,     xpath: "eveapi/result/logo/shape1/?[0]",    type: :integer
-      attribute :logo_shape2,     xpath: "eveapi/result/logo/shape2/?[0]",    type: :integer
-      attribute :logo_shape3,     xpath: "eveapi/result/logo/shape3/?[0]",    type: :integer
-      attribute :logo_color1,     xpath: "eveapi/result/logo/color1/?[0]",    type: :integer
-      attribute :logo_color2,     xpath: "eveapi/result/logo/color2/?[0]",    type: :integer
-      attribute :logo_color3,     xpath: "eveapi/result/logo/color3/?[0]",    type: :integer
+      namespace :logo, xpath: "eveapi/result/logo" do
+        attribute :graphic_id, xpath: "graphicID/?[0]", type: :integer
+        attribute :shape1,     xpath: "shape1/?[0]",    type: :integer
+        attribute :shape2,     xpath: "shape2/?[0]",    type: :integer
+        attribute :shape3,     xpath: "shape3/?[0]",    type: :integer
+        attribute :color1,     xpath: "color1/?[0]",    type: :integer
+        attribute :color2,     xpath: "color2/?[0]",    type: :integer
+        attribute :color3,     xpath: "color3/?[0]",    type: :integer
+      end
 
       # @param corporation_id [Integer] EVE corporation ID
       def initialize(corporation_id, opts = {})

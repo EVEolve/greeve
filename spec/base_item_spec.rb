@@ -14,6 +14,10 @@ vcr_opts_response_error = {
   allow_playback_repeats: true,
 }
 
+vcr_opts_namespace_dsl = {
+  cassette_name: "corporation/starbase_detail",
+}
+
 describe Greeve::BaseItem, vcr: vcr_opts do
   let(:character_id)  { 462421468 }
   let(:character_name) { "Zaphoon" }
@@ -91,16 +95,96 @@ describe Greeve::BaseItem, vcr: vcr_opts do
         end
       end
 
-      specify "attribute" do
-        _character_name_xpath = "eveapi/result/characterName/?[0]"
+      describe "attribute" do
+        before {
+          _character_name_xpath = "eveapi/result/characterName/?[0]"
 
-        subclass.class_eval do
-          endpoint "eve/CharacterInfo"
+          subclass.class_eval do
+            endpoint "eve/CharacterInfo"
 
-          attribute :character_name, xpath: _character_name_xpath, type: :string
+            attribute :character_name, xpath: _character_name_xpath, type: :string
+          end
+        }
+
+        its(:character_name) { should eq character_name }
+
+        it "is registered" do
+          subject.send(:_attributes).keys.should include :character_name
+        end
+      end
+
+      describe "namespace", vcr: vcr_opts_namespace_dsl do
+        let(:item_id) { 100449451 }
+        let(:key) { 1515664 }
+        let(:vcode) { "QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3" }
+
+        let(:subclass) {
+          Class.new(Greeve::BaseItem).tap do |klass|
+            klass.class_eval do
+              endpoint "corp/StarbaseDetail"
+
+              namespace :general_settings, xpath: "eveapi/result/generalSettings" do
+                attribute :usage_flags, xpath: "usageFlags/?[0]", type: :integer
+              end
+
+              namespace :combat_settings, xpath: "eveapi/result/combatSettings" do
+                namespace :use_standings_from, xpath: "useStandingsFrom" do
+                  attribute :owner_id, xpath: "@ownerID", type: :integer
+                end
+              end
+
+              def initialize(item_id, opts = {})
+                opts[:query_params] = {"itemID" => item_id}
+                super(opts)
+              end
+            end
+          end
+        }
+
+        let(:api_item) { subclass.new(item_id, key: key, vcode: vcode) }
+        subject { namespace }
+
+        it "is registered as an attribute" do
+          api_item.send(:_attributes).keys.should include :general_settings
+          api_item.send(:_attributes).keys.should include :combat_settings
         end
 
-        subject.character_name.should eq character_name
+        specify(:to_h) do
+          api_item.to_h.should eq ({
+            general_settings: {
+              usage_flags: 3,
+            },
+            combat_settings: {
+              use_standings_from: {
+                owner_id: 154683985,
+              },
+            },
+          })
+        end
+
+        describe "general_settings" do
+          let(:namespace) { api_item.general_settings }
+
+          it { should be_a Greeve::Namespace }
+          its(:name) { should eq :general_settings }
+          its(:usage_flags) { should eq 3 }
+        end
+
+        describe "combat_settings" do
+          let(:namespace) { api_item.combat_settings }
+
+          it { should be_a Greeve::Namespace }
+          its(:name) { should eq :combat_settings }
+          its(:use_standings_from) { should be_a Greeve::Namespace }
+
+          describe "use_standings_from" do
+            let(:namespace) { api_item.combat_settings.use_standings_from }
+
+            it { should be_a Greeve::Namespace }
+            its(:name) { should eq :use_standings_from }
+            its(:owner_id) { should eq 154683985 }
+          end
+        end
       end
 
       describe "rowset" do
@@ -119,6 +203,10 @@ describe Greeve::BaseItem, vcr: vcr_opts do
             end
           end
         }
+
+        specify "is registered as an attribute" do
+          api_item.send(:_attributes).keys.should include :employment_history
+        end
 
         it { should be_a Greeve::Rowset }
         its(:name) { should eq :employment_history }

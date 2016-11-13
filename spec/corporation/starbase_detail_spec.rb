@@ -17,16 +17,50 @@ describe Greeve::Corporation::StarbaseDetail, vcr: vcr_opts do
     its(:state) { should eq 4 }
     its(:state_timestamp) { should eq Time.parse("2009-05-02 21:31:36 UTC") }
     its(:online_timestamp) { should eq Time.parse("2009-04-18 23:30:29 UTC") }
-    its(:usage_flags) { should eq 3 }
-    its(:deploy_flags) { should eq 0 }
-    its(:allow_corporation_members) { should eq true }
-    its(:allow_alliance_members) { should eq true }
-    its(:use_standings_from_owner_id) { should eq 154683985 }
-    its(:on_standing_drop_standing) { should eq 990 }
-    its(:on_status_drop_enabled) { should eq false }
-    its(:on_status_drop_standing) { should eq 0 }
-    its(:on_aggression_enabled) { should eq false }
-    its(:on_corporation_war_enabled) { should eq true }
+
+    context "general_settings" do
+      subject { resource.general_settings }
+
+      its(:usage_flags) { should eq 3 }
+      its(:deploy_flags) { should eq 0 }
+      its(:allow_corporation_members) { should eq true }
+      its(:allow_alliance_members) { should eq true }
+    end
+
+    context "combat_settings" do
+      subject { resource.combat_settings }
+
+      context "use_standings_from" do
+        subject { resource.combat_settings.use_standings_from }
+
+        its(:owner_id) { should eq 154683985 }
+      end
+
+      context "on_standing_drop" do
+        subject { resource.combat_settings.on_standing_drop }
+
+        its(:standing) { should eq 990 }
+      end
+
+      context "on_status_drop" do
+        subject { resource.combat_settings.on_status_drop }
+
+        its(:enabled) { should eq false }
+        its(:standing) { should eq 0 }
+      end
+
+      context "on_aggression" do
+        subject { resource.combat_settings.on_aggression }
+
+        its(:enabled) { should eq false }
+      end
+
+      context "on_corporation_war" do
+        subject { resource.combat_settings.on_corporation_war }
+
+        its(:enabled) { should eq true }
+      end
+    end
 
     its(:fuel) { should be_a Greeve::Rowset }
   end
