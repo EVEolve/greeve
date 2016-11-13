@@ -12,19 +12,35 @@ module Greeve
       attribute :state_timestamp,  xpath: "eveapi/result/stateTimestamp/?[0]",  type: :datetime
       attribute :online_timestamp, xpath: "eveapi/result/onlineTimestamp/?[0]", type: :datetime
 
-      # General Settings
-      attribute :usage_flags,               xpath: "eveapi/result/generalSettings/usageFlags/?[0]",              type: :integer
-      attribute :deploy_flags,              xpath: "eveapi/result/generalSettings/deployFlags/?[0]",             type: :integer
-      attribute :allow_corporation_members, xpath: "eveapi/result/generalSettings/allowCorporationMembers/?[0]", type: :boolean
-      attribute :allow_alliance_members,    xpath: "eveapi/result/generalSettings/allowAllianceMembers/?[0]",    type: :boolean
+      namespace :general_settings, xpath: "eveapi/result/generalSettings" do
+        attribute :usage_flags,               xpath: "usageFlags/?[0]",              type: :integer
+        attribute :deploy_flags,              xpath: "deployFlags/?[0]",             type: :integer
+        attribute :allow_corporation_members, xpath: "allowCorporationMembers/?[0]", type: :boolean
+        attribute :allow_alliance_members,    xpath: "allowAllianceMembers/?[0]",    type: :boolean
+      end
 
-      # Combat Settings
-      attribute :use_standings_from_owner_id, xpath: "eveapi/result/combatSettings/useStandingsFrom/@ownerID", type: :integer
-      attribute :on_standing_drop_standing,   xpath: "eveapi/result/combatSettings/onStandingDrop/@standing",  type: :integer
-      attribute :on_status_drop_enabled,      xpath: "eveapi/result/combatSettings/onStatusDrop/@enabled",     type: :boolean
-      attribute :on_status_drop_standing,     xpath: "eveapi/result/combatSettings/onStatusDrop/@standing",    type: :integer
-      attribute :on_aggression_enabled,       xpath: "eveapi/result/combatSettings/onAggression/@enabled",     type: :boolean
-      attribute :on_corporation_war_enabled,  xpath: "eveapi/result/combatSettings/onCorporationWar/@enabled", type: :boolean
+      namespace :combat_settings, xpath: "eveapi/result/combatSettings" do
+        namespace :use_standings_from, xpath: "useStandingsFrom" do
+          attribute :owner_id, xpath: "@ownerID", type: :integer
+        end
+
+        namespace :on_standing_drop, xpath: "onStandingDrop" do
+          attribute :standing, xpath: "@standing", type: :integer
+        end
+
+        namespace :on_status_drop, xpath: "onStatusDrop" do
+          attribute :enabled,  xpath: "@enabled",  type: :boolean
+          attribute :standing, xpath: "@standing", type: :integer
+        end
+
+        namespace :on_aggression, xpath: "onAggression" do
+          attribute :enabled, xpath: "@enabled", type: :boolean
+        end
+
+        namespace :on_corporation_war, xpath: "onCorporationWar" do
+          attribute :enabled, xpath: "@enabled", type: :boolean
+        end
+      end
 
       rowset :fuel, xpath: "eveapi/result/rowset[@name='fuel']" do
         attribute :type_id,  xpath: "@typeID",   type: :integer
