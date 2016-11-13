@@ -19,6 +19,13 @@ describe Greeve::Helpers::DefineDSLMethods do
         include_examples :can_define_an_attribute, :integer, Fixnum
       end
 
+      describe "integer_array attribute" do
+        let(:value) { "3,6,9" }
+        let(:expected) { [3, 6, 9] }
+
+        include_examples :can_define_an_attribute, :integer_array, Array
+      end
+
       describe "numeric attribute" do
         let(:value) { "3.1" }
         let(:expected) { BigDecimal.new("3.1") }
