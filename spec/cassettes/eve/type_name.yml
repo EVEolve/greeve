@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/eve/TypeName.xml.aspx?IDs=640
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Test Application
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Mon, 21 Nov 2016 05:52:43 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-21 06:09:31</currentTime>
+          <result>
+            <rowset name="types" key="typeID" columns="typeID,typeName">
+              <row typeID="640" typeName="Scorpion" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-21 07:09:31</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/eve/TypeName.xml.aspx?IDs=640
+  recorded_at: Mon, 21 Nov 2016 05:52:42 GMT
+recorded_with: VCR 3.0.3
