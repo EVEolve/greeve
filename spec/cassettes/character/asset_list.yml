@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/AssetList.xml.aspx?characterID=462421468&flat=1&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Tue, 22 Nov 2016 03:48:19 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-22 03:48:19</currentTime>
+          <result>
+            <rowset name="assets" key="itemID" columns="itemID,locationID,typeID,quantity,flag,singleton">
+              <row itemID="1009196745972" locationID="60001039" typeID="27914" quantity="1" flag="4" singleton="1" rawQuantity="-1" />
+              <row itemID="1009236703587" locationID="60001039" typeID="1405" quantity="6" flag="4" singleton="0" />
+              <row itemID="1018882977316" locationID="462421468" typeID="25718" quantity="1" flag="61" singleton="1" rawQuantity="-1" />
+              <row itemID="1021674487837" locationID="60011998" typeID="33102" quantity="1" flag="4" singleton="1" rawQuantity="-2" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-22 04:49:46</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/AssetList.xml.aspx?characterID=462421468&flat=1&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Tue, 22 Nov 2016 03:48:19 GMT
+recorded_with: VCR 3.0.3
