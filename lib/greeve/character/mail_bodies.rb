@@ -14,10 +14,12 @@ module Greeve
       end
 
       # @param character_id [Integer] EVE character ID
-      # @param message_ids [Array<Integer>, Integer] either a single message ID,
-      #   or an array of message IDs
-      def initialize(character_id, message_ids, opts = {})
-        message_ids = [message_ids] unless message_ids.is_a?(Array)
+      # @param message_ids [*Array<Integer>, Integer] either a single message ID,
+      #   or a list of message IDs
+      #
+      # @!method initialize(character_id, *message_ids, opts = {})
+      def initialize(character_id, *message_ids)
+        opts = message_ids.last.is_a?(Hash) ? message_ids.pop : {}
 
         opts[:query_params] = {
           "characterID" => character_id,

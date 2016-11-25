@@ -34,6 +34,10 @@ describe Greeve::Character::MailBodies, vcr: vcr_opts do
   context "multiple message ids", vcr: vcr_opts_multiple_ids do
     let(:message_ids) { [362680073, 362680744] }
 
+    let(:resource) {
+      Greeve::Character::MailBodies.new(character_id, *message_ids, key: key, vcode: vcode)
+    }
+
     context "resource" do
       subject { resource }
 
