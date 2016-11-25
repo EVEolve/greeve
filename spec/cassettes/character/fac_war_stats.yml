@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/FacWarStats.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Tue, 22 Nov 2016 04:27:25 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-22 04:27:25</currentTime>
+          <result>
+            <factionID>500001</factionID>
+            <factionName>Caldari State</factionName>
+            <enlisted>2008-06-10 22:10:00</enlisted>
+            <currentRank>4</currentRank>
+            <highestRank>5</highestRank>
+            <killsYesterday>1</killsYesterday>
+            <killsLastWeek>8</killsLastWeek>
+            <killsTotal>21</killsTotal>
+            <victoryPointsYesterday>120</victoryPointsYesterday>
+            <victoryPointsLastWeek>1044</victoryPointsLastWeek>
+            <victoryPointsTotal>2063</victoryPointsTotal>
+          </result> 
+          <cachedUntil>2016-11-22 16:27:25</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/FacWarStats.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Tue, 22 Nov 2016 04:27:25 GMT
+recorded_with: VCR 3.0.3
