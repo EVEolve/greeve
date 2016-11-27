@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/Research.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 27 Nov 2016 21:35:08 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-27 21:35:08</currentTime>
+          <result>
+            <rowset name="research" key="agentID" columns="agentID,skillTypeID,researchStartDate,pointsPerDay,remainderPoints">
+              <row agentID="3009358" skillTypeID="11450" researchStartDate="2014-11-27 16:34:47" pointsPerDay="53.5346162146776" remainderPoints="53604.0634303189"/>
+              <row agentID="3012617" skillTypeID="11453" researchStartDate="2015-01-31 21:31:02" pointsPerDay="37.0312810778599" remainderPoints="65.140031465693"/>
+              <row agentID="3012662" skillTypeID="11452" researchStartDate="2015-01-31 05:38:13" pointsPerDay="53.3700894238397" remainderPoints="23.557288895885"/>
+              <row agentID="3013460" skillTypeID="11449" researchStartDate="2015-01-31 21:11:04" pointsPerDay="5.8" remainderPoints="0"/>
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-27 21:46:46</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/Research.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 27 Nov 2016 21:35:08 GMT
+recorded_with: VCR 3.0.3
