@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/WalletTransactions.xml.aspx?characterID=462421468&rowCount=2&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 27 Nov 2016 01:36:13 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-27 01:36:13</currentTime>
+          <result>
+            <rowset name="transactions" key="transactionID" columns="transactionDateTime,transactionID,quantity,typeName,typeID,price,clientID,clientName,stationID,stationName,transactionType,transactionFor,journalTransactionID,clientTypeID">
+              <row transactionDateTime="2016-11-27 00:50:51" transactionID="4455566311" quantity="4700" typeName="Coolant" typeID="9832" price="10121.05" clientID="93363822" clientName="who1 eva" stationID="60011866" stationName="Dodixie IX - Moon 20 - Federation Navy Assembly Plant" transactionType="sell" transactionFor="personal" journalTransactionID="13310477035" clientTypeID="1386" />
+              <row transactionDateTime="2016-11-27 00:50:40" transactionID="4455566035" quantity="5090" typeName="Consumer Electronics" typeID="9836" price="10803.00" clientID="1071213958" clientName="Byuk Gho" stationID="60011866" stationName="Dodixie IX - Moon 20 - Federation Navy Assembly Plant" transactionType="sell" transactionFor="personal" journalTransactionID="13310476070" clientTypeID="1377" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-27 01:46:42</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/WalletTransactions.xml.aspx?characterID=462421468&rowCount=2&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 27 Nov 2016 01:36:13 GMT
+recorded_with: VCR 3.0.3
