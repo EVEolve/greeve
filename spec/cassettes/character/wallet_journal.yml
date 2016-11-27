@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/WalletJournal.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 27 Nov 2016 01:56:05 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-27 01:56:05</currentTime>
+          <result>
+            <rowset name="transactions" key="refID" columns="date,refID,refTypeID,ownerName1,ownerID1,ownerName2,ownerID2,argName1,argID1,amount,balance,reason,taxReceiverID,taxAmount,owner1TypeID,owner2TypeID">
+              <row date="2016-11-27 00:50:51" refID="13310477034" refTypeID="54" ownerName1="Zaphoon" ownerID1="462421468" ownerName2="Secure Commerce Commission" ownerID2="1000132" argName1="" argID1="0" amount="-475689.35" balance="1234567.89" reason="" taxReceiverID="" taxAmount="" owner1TypeID="1375" owner2TypeID="2" />
+              <row date="2016-11-27 00:50:51" refID="13310477033" refTypeID="2" ownerName1="who1 eva" ownerID1="93363822" ownerName2="Zaphoon" ownerID2="462421468" argName1="4455566311" argID1="0" amount="47568935.00" balance="1234567.89" reason="" taxReceiverID="" taxAmount="" owner1TypeID="1386" owner2TypeID="1375" />
+              <row date="2016-11-27 00:50:51" refID="13310477030" refTypeID="46" ownerName1="Zaphoon" ownerID1="462421468" ownerName2="Federation Navy" ownerID2="1000120" argName1="EVE System" argID1="1" amount="-1146771.78" balance="1234567.89" reason="" taxReceiverID="" taxAmount="" owner1TypeID="1375" owner2TypeID="2" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-27 02:16:43</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/WalletJournal.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 27 Nov 2016 01:56:05 GMT
+recorded_with: VCR 3.0.3
