@@ -2,9 +2,9 @@ require_relative "../base_item"
 
 module Greeve
   module Corporation
-    # Unfinished corporation industry jobs.
+    # Finished corporation industry jobs.
     #
-    # @see https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/corporation/corp_industryjobs.html
+    # @see https://eveonline-third-party-documentation.readthedocs.io/en/latest/xmlapi/corporation/corp_industryjobshistory.html
     class IndustryJobsHistory < Greeve::BaseItem
       endpoint "corp/IndustryJobsHistory"
 
