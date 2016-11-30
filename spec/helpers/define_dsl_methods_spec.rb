@@ -90,6 +90,16 @@ describe Greeve::Helpers::DefineDSLMethods do
           include_examples :can_define_an_attribute, :datetime, NilClass
         end
       end
+
+      describe "hash attribute" do
+        let(:value) { "key_1: value_1\nkey_2: value_2" }
+        let(:expected) {{
+          "key_1" => "value_1",
+          "key_2" => "value_2",
+        }}
+
+        include_examples :can_define_an_attribute, :hash, Hash
+      end
     end
 
     context "class" do

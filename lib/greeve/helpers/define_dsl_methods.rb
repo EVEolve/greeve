@@ -36,6 +36,8 @@ module Greeve
                 value.to_s.strip
               when :datetime
                 value.empty? ? nil : Time.parse(value + " UTC")
+              when :hash
+                value.scan(/^(.*?): (.*?)$/).to_h
               end
           end
 
