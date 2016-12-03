@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/IndustryJobs.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Mon, 28 Nov 2016 05:35:44 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-28 05:35:44</currentTime>
+          <result>
+            <rowset name="jobs" key="jobID" columns="jobID,installerID,installerName,facilityID,solarSystemID,solarSystemName,stationID,activityID,blueprintID,blueprintTypeID,blueprintTypeName,blueprintLocationID,outputLocationID,runs,cost,teamID,licensedRuns,probability,productTypeID,productTypeName,status,timeInSeconds,startDate,endDate,pauseDate,completedDate,completedCharacterID,successfulRuns">
+              <row jobID="310727768" installerID="462421468" installerName="Zaphoon" facilityID="60014485" solarSystemID="30003010" solarSystemName="Halle" stationID="60014485" activityID="3" blueprintID="1021769767299" blueprintTypeID="11284" blueprintTypeName="Cap Booster 150 Blueprint" blueprintLocationID="60014485" outputLocationID="60014485" runs="10" cost="36464.00" teamID="0" licensedRuns="300" probability="1" productTypeID="11284" productTypeName="Cap Booster 150 Blueprint" status="1" timeInSeconds="310080" startDate="2016-11-25 18:49:03" endDate="2016-11-29 08:57:03" pauseDate="0001-01-01 00:00:00" completedDate="0001-01-01 00:00:00" completedCharacterID="0" successfulRuns="0" />
+              <row jobID="310385943" installerID="462421468" installerName="Zaphoon" facilityID="60014485" solarSystemID="30003010" solarSystemName="Halle" stationID="60014485" activityID="3" blueprintID="1021763276651" blueprintTypeID="967" blueprintTypeName="Caldari Shuttle Blueprint" blueprintLocationID="60014485" outputLocationID="60014485" runs="1" cost="20513.00" teamID="0" licensedRuns="30" probability="1" productTypeID="967" productTypeName="Caldari Shuttle Blueprint" status="1" timeInSeconds="1796284" startDate="2016-11-22 16:50:29" endDate="2016-12-13 11:48:33" pauseDate="0001-01-01 00:00:00" completedDate="0001-01-01 00:00:00" completedCharacterID="0" successfulRuns="0" />
+              <row jobID="309210525" installerID="462421468" installerName="Zaphoon" facilityID="60014485" solarSystemID="30003010" solarSystemName="Halle" stationID="60014485" activityID="3" blueprintID="1003659758471" blueprintTypeID="31120" blueprintTypeName="Medium Cargohold Optimization I Blueprint" blueprintLocationID="60014485" outputLocationID="60014485" runs="10" cost="2436347.00" teamID="0" licensedRuns="60" probability="1" productTypeID="31120" productTypeName="Medium Cargohold Optimization I Blueprint" status="1" timeInSeconds="1550400" startDate="2016-11-10 23:49:43" endDate="2016-11-28 22:29:43" pauseDate="0001-01-01 00:00:00" completedDate="0001-01-01 00:00:00" completedCharacterID="0" successfulRuns="0" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-28 05:47:32</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/IndustryJobs.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Mon, 28 Nov 2016 05:35:44 GMT
+recorded_with: VCR 3.0.3
