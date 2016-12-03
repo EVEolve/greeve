@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/IndustryJobsHistory.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Mon, 28 Nov 2016 05:50:35 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-28 05:50:35</currentTime>
+          <result>
+            <rowset name="jobs" key="jobID" columns="jobID,installerID,installerName,facilityID,solarSystemID,solarSystemName,stationID,activityID,blueprintID,blueprintTypeID,blueprintTypeName,blueprintLocationID,outputLocationID,runs,cost,teamID,licensedRuns,probability,productTypeID,productTypeName,status,timeInSeconds,startDate,endDate,pauseDate,completedDate,completedCharacterID,successfulRuns">
+              <row jobID="310623237" installerID="462421468" installerName="Zaphoon" facilityID="60014485" solarSystemID="30003010" solarSystemName="Halle" stationID="60014485" activityID="5" blueprintID="1022574826404" blueprintTypeID="18067" blueprintTypeName="Veldspar Mining Crystal I Blueprint" blueprintLocationID="60014485" outputLocationID="60014485" runs="1" cost="8268.00" teamID="0" licensedRuns="600" probability="1" productTypeID="18067" productTypeName="Veldspar Mining Crystal I Blueprint" status="101" timeInSeconds="91800" startDate="2016-11-24 19:12:18" endDate="2016-11-25 20:42:18" pauseDate="0001-01-01 00:00:00" completedDate="2016-11-25 21:50:24" completedCharacterID="462421468" successfulRuns="1" />
+              <row jobID="310623179" installerID="462421468" installerName="Zaphoon" facilityID="60014485" solarSystemID="30003010" solarSystemName="Halle" stationID="60014485" activityID="5" blueprintID="1022574837731" blueprintTypeID="18059" blueprintTypeName="Plagioclase Mining Crystal I Blueprint" blueprintLocationID="60014485" outputLocationID="60014485" runs="1" cost="32775.00" teamID="0" licensedRuns="600" probability="1" productTypeID="18059" productTypeName="Plagioclase Mining Crystal I Blueprint" status="101" timeInSeconds="91800" startDate="2016-11-24 19:11:47" endDate="2016-11-25 20:41:47" pauseDate="0001-01-01 00:00:00" completedDate="2016-11-25 21:50:24" completedCharacterID="462421468" successfulRuns="1" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-28 11:26:35</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/IndustryJobsHistory.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Mon, 28 Nov 2016 05:50:35 GMT
+recorded_with: VCR 3.0.3
