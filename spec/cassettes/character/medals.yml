@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/Medals.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 27 Nov 2016 21:14:05 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-27 21:14:05</currentTime>
+          <result>
+            <rowset name="currentCorporation" key="medalID" columns="medalID,reason,status,issuerID,issued">
+              <row medalID="95079" reason="For continued support, loyalty and dedication towards" status="public" issuerID="259695227" issued="2012-11-19 08:21:17"/>
+            </rowset>
+            <rowset name="otherCorporations" key="medalID" columns="medalID,reason,status,issuerID,issued,corporationID,title,description">
+              <row medalID="4106" reason="For continued support, loyalty and dedication towards the Centre for Advanced Studies" status="private" issuerID="132533870" issued="2008-11-25 10:36:01" corporationID="1711141370" title="Medal of Service" description="For taking initiative and making an extraordinary contribution towards the corporation"/>
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-28 03:11:05</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/Medals.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 27 Nov 2016 21:14:05 GMT
+recorded_with: VCR 3.0.3
