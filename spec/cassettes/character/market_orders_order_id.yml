@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/MarketOrders.xml.aspx?characterID=462421468&orderID=4691584200&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 27 Nov 2016 21:56:19 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-27 22:05:00</currentTime>
+          <result>
+            <rowset name="orders" key="orderID" columns="orderID,charID,stationID,volEntered,volRemaining,minVolume,orderState,typeID,range,accountKey,duration,escrow,price,bid,issued">
+              <row orderID="4691584200" charID="462421468" stationID="60011866" volEntered="5090" volRemaining="0" minVolume="1" orderState="2" typeID="9836" range="32767" accountKey="1000" duration="90" escrow="0.00" price="10803.00" bid="0" issued="2016-11-27 00:50:40" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-27 22:59:39</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/MarketOrders.xml.aspx?characterID=462421468&orderID=4691584200&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 27 Nov 2016 21:56:19 GMT
+recorded_with: VCR 3.0.3
