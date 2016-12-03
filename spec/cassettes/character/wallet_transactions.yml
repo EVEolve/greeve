@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/WalletTransactions.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 27 Nov 2016 01:09:18 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-27 01:09:18</currentTime>
+          <result>
+            <rowset name="transactions" key="transactionID" columns="transactionDateTime,transactionID,quantity,typeName,typeID,price,clientID,clientName,stationID,stationName,transactionType,transactionFor,journalTransactionID,clientTypeID">
+              <row transactionDateTime="2016-11-20 20:00:54" transactionID="4448553214" quantity="1" typeName="Veldspar Mining Crystal I Blueprint" typeID="18067" price="100000.00" clientID="1000097" clientName="Material Acquisition" stationID="60009520" stationName="Bereye VI - Moon 2 - Material Acquisition Refinery" transactionType="buy" transactionFor="personal" journalTransactionID="13277445147" clientTypeID="2" />
+              <row transactionDateTime="2016-10-29 19:47:52" transactionID="4431459106" quantity="3845" typeName="Consumer Electronics" typeID="9836" price="11160.93" clientID="92445519" clientName="NATE FRESH" stationID="60011866" stationName="Dodixie IX - Moon 20 - Federation Navy Assembly Plant" transactionType="sell" transactionFor="personal" journalTransactionID="13194447833" clientTypeID="1377" />
+              <row transactionDateTime="2016-10-29 19:47:44" transactionID="4431458993" quantity="2970" typeName="Coolant" typeID="9832" price="9600.02" clientID="1080270316" clientName="Gaius Xenon" stationID="60011866" stationName="Dodixie IX - Moon 20 - Federation Navy Assembly Plant" transactionType="sell" transactionFor="personal" journalTransactionID="13194447358" clientTypeID="1378" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-27 01:16:41</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/WalletTransactions.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 27 Nov 2016 01:09:18 GMT
+recorded_with: VCR 3.0.3

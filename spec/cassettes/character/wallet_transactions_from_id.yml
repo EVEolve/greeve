@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/WalletTransactions.xml.aspx?characterID=462421468&fromID=4431459106&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sun, 27 Nov 2016 01:33:32 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-11-27 01:33:32</currentTime>
+          <result>
+            <rowset name="transactions" key="transactionID" columns="transactionDateTime,transactionID,quantity,typeName,typeID,price,clientID,clientName,stationID,stationName,transactionType,transactionFor,journalTransactionID,clientTypeID">
+              <row transactionDateTime="2016-10-29 19:47:44" transactionID="4431458993" quantity="2970" typeName="Coolant" typeID="9832" price="9600.02" clientID="1080270316" clientName="Gaius Xenon" stationID="60011866" stationName="Dodixie IX - Moon 20 - Federation Navy Assembly Plant" transactionType="sell" transactionFor="personal" journalTransactionID="13194447358" clientTypeID="1378" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-11-27 01:46:42</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/WalletTransactions.xml.aspx?characterID=462421468&fromID=4431459106&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Sun, 27 Nov 2016 01:33:32 GMT
+recorded_with: VCR 3.0.3
