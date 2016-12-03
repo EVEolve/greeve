@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/ContractBids.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Thu, 01 Dec 2016 04:29:58 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-12-01 04:29:58</currentTime>
+          <result>
+            <rowset columns="bidID,contractID,bidderID,dateBid,amount" key="bidID" name="bidList">
+              <row amount="1000000.00" dateBid="2015-11-08 03:45:50" bidderID="92168909" contractID="98714177" bidID="4891368"/>
+              <row amount="2000000.00" dateBid="2015-11-08 03:46:21" bidderID="95633963" contractID="98714177" bidID="4891412"/>
+              <row amount="152441923.72" dateBid="2015-11-08 03:49:46" bidderID="1188435724" contractID="98714179" bidID="4891491"/>
+            </rowset>
+          </result>
+          <cachedUntil>2016-12-01 04:37:26</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/ContractBids.xml.aspx?characterID=462421468&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Thu, 01 Dec 2016 04:29:58 GMT
+recorded_with: VCR 3.0.3
