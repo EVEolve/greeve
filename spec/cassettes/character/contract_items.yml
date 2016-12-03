@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/char/ContractItems.xml.aspx?characterID=462421468&contractID=111278568&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Thu, 01 Dec 2016 05:59:45 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-12-01 05:59:45</currentTime>
+          <result>
+            <rowset name="itemList" key="recordID" columns="recordID,typeID,quantity,rawQuantity,singleton,included">
+              <row recordID="2071907671" typeID="215" quantity="1000" singleton="0" included="1" />
+              <row recordID="2071907672" typeID="219" quantity="1000" singleton="0" included="1" />
+              <row recordID="2071907673" typeID="216" quantity="1000" singleton="0" included="1" />
+              <row recordID="2071907674" typeID="222" quantity="1000" singleton="0" included="1" />
+            </rowset>
+          </result>
+          <cachedUntil>2026-11-29 05:23:33</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/char/ContractItems.xml.aspx?characterID=462421468&contractID=111278568&keyID=1515664&vCode=QYYBHdsFMmdWjc9bkWhqqKx00NLqA1c3pNHlacqHUGpaTkrnyrzwZ0vFY9L6aei3
+  recorded_at: Thu, 01 Dec 2016 05:59:45 GMT
+recorded_with: VCR 3.0.3
