@@ -14,9 +14,14 @@ module Greeve
         attribute :character_id, xpath: "@characterID", type: :integer
       end
 
-      # @param ids [Integer] EVE character IDs
-      def initialize(ids, opts = {})
-        opts[:query_params] = { "ids" => ids }
+      # @param ids [Array<Integer>] IDs of characters
+      #
+      # @!method initialize(*ids, opts = {})
+      def initialize(*ids)
+        opts = ids.last.is_a?(Hash) ? ids.pop : {}
+
+        opts[:query_params] = { "IDs" => ids.join(",") }
+
         super(opts)
       end
     end

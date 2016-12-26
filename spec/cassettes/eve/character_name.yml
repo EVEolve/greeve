@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.eveonline.com/eve/CharacterName.xml.aspx?ids=92902265
+    uri: https://api.eveonline.com/eve/CharacterName.xml.aspx?IDs=92902265
     body:
       encoding: US-ASCII
       string: ''
@@ -39,6 +39,6 @@ http_interactions:
         </eveapi>
     http_version: '1.1'
     adapter_metadata:
-      effective_url: https://api.eveonline.com/eve/CharacterName.xml.aspx?ids=92902265
+      effective_url: https://api.eveonline.com/eve/CharacterName.xml.aspx?IDs=92902265
   recorded_at: Wed, 12 Oct 2016 02:24:16 GMT
 recorded_with: VCR 3.0.3
