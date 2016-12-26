@@ -3,7 +3,6 @@ vcr_opts = {
 }
 
 describe Greeve::Eve::CharacterID, vcr: vcr_opts do
-
   let(:name) { "Remy Hart" }
 
   let(:resource) {
