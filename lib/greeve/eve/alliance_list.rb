@@ -17,11 +17,6 @@ module Greeve
         attribute :start_date,       xpath: "@startDate",      type: :datetime
       end
 
-      rowset :member_corporations, xpath: "eveapi/result/rowset[@name='memberCorporations']" do
-        attribute :character_id, xpath: "@characterID", type: :integer
-        attribute :start_date, xpath: "@startDate",     type: :datetime
-      end
-
       # @param version [Integer] EVE Alliance List
       def initialize(version, opts = {})
         raise ArgumentError, "not implemented, use version=1" if version == 0
