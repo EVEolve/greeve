@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/eve/ConquerableStationList.xml.aspx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Mon, 26 Dec 2016 21:02:41 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-12-26 21:02:41</currentTime>
+          <result>
+            <rowset name="outposts" key="stationID" columns="stationID,stationName,stationTypeID,solarSystemID,corporationID,corporationName,x,y,z">
+              <row stationID="61001046" stationName="W-XY4J X - Deadly Impasse" stationTypeID="21646" solarSystemID="30001105" corporationID="98021158" corporationName="corporation federal agents space" x="394820444160" y="-18220769280" z="-6131542302720" />
+              <row stationID="61001047" stationName="7MD-S1 XI - IOU - Roland's Place" stationTypeID="21645" solarSystemID="30001232" corporationID="98132485" corporationName="Bailiffs" x="-2950319185920" y="-500139909120" z="2101918064640" />
+              <row stationID="61001048" stationName="E9KD-N IX - The Big Blunt" stationTypeID="21645" solarSystemID="30003694" corporationID="98384059" corporationName="CK-0FF" x="1474703155200" y="-198735421440" z="450142740480" />
+            </rowset>
+          </result>
+          <cachedUntil>2016-12-26 21:07:38</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/eve/ConquerableStationList.xml.aspx
+  recorded_at: Mon, 26 Dec 2016 21:02:41 GMT
+recorded_with: VCR 3.0.3
