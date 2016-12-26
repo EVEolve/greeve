@@ -3,7 +3,6 @@ vcr_opts = {
 }
 
 describe Greeve::Eve::CharacterName, vcr: vcr_opts do
-
   let(:ids) { 92902265 }
 
   let(:resource) {
