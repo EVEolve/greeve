@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.eveonline.com/eve/ErrorList.xml.aspx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/xml; charset=utf-8
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Mon, 26 Dec 2016 20:54:25 GMT
+    body:
+      encoding: UTF-8
+      string: >
+        <?xml version='1.0' encoding='UTF-8'?>
+        <eveapi version="2">
+          <currentTime>2016-12-26 20:54:25</currentTime>
+          <result>
+            <rowset name="errors" key="errorCode" columns="errorCode,errorText">
+              <row errorCode="100" errorText="Expected before ref/trans ID = 0: wallet not previously loaded." />
+              <row errorCode="101" errorText="Wallet exhausted: retry after {0}." />
+              <row errorCode="102" errorText="Expected before ref/trans ID [{0}] but supplied [{1}]: wallet previously loaded." />
+            </rowset>
+          </result>
+          <cachedUntil>2016-12-26 21:54:25</cachedUntil>
+        </eveapi>
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.eveonline.com/eve/ErrorList.xml.aspx
+  recorded_at: Mon, 26 Dec 2016 20:54:25 GMT
+recorded_with: VCR 3.0.3
